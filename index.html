@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -112,10 +112,13 @@
   .clients .lab{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono)}
   .clients .marks{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
   .clients img.cl{height:42px;width:auto;filter:saturate(.2) contrast(1.05)}
-  .bhmark{display:flex;align-items:center;gap:9px}
-  .bhmark .sq{width:34px;height:34px;background:var(--navy);color:var(--gold-2);font-family:var(--display);font-weight:700;font-size:.92rem;display:grid;place-items:center;letter-spacing:-.02em}
-  .bhmark .wm{font-family:var(--display);font-weight:600;color:var(--navy);font-size:.96rem;line-height:1}
-  .bhmark .wm span{display:block;font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;color:var(--mutemono);font-weight:500;margin-top:3px}
+  .bhlogo{display:inline-flex;align-items:center;gap:5px;background:var(--navy);border-radius:4px;padding:6px 11px;font-family:'Arial Black','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:.82rem;color:#fff;letter-spacing:.02em;line-height:1;white-space:nowrap}
+  .bhlogo .dot{width:8px;height:8px;border-radius:50%;background:#fff;flex:none}
+  .bhlogo.lg{font-size:1.35rem;padding:12px 22px;gap:8px}
+  .bhlogo.lg .dot{width:13px;height:13px}
+  .bhlogo.sm{font-size:.6rem;padding:4px 8px;gap:3px}
+  .bhlogo.sm .dot{width:5px;height:5px}
+  .nellislogo{font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;color:#16a34a;letter-spacing:-.01em;line-height:1;display:inline-block}
 
   /* stat band */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--navy);margin-top:30px;background:var(--navy)}
@@ -269,7 +272,7 @@
     <div class="railclients">
       <div class="h">Working With</div>
       <div class="row"><img src="img/starside.png" alt="" height="18" style="filter:saturate(.2)"> Starside Security</div>
-      <div class="row"><span class="bhmark"><span class="sq" style="width:18px;height:18px;font-size:.6rem">BH</span></span> Base Hill, Inc.</div>
+      <div class="row"><span class="bhlogo sm"><span>BASE</span><span class="dot"></span><span>HILL</span></span></div>
     </div>
   </aside>
 
@@ -278,7 +281,7 @@
     <!-- HERO -->
     <section class="hero" style="border-top:none">
       <span class="lbl ox reveal">For small federal contractors · The Founding 13</span>
-      <h1 class="reveal">You're registered in SAM.<br>You're still not winning.</h1>
+      <h1 class="reveal">Are you missing out on the next big bid?</h1>
       <p class="sub reveal d1">We hand you the recompetes worth defending, the bids you can actually win, and the first draft of the proposal — proven on your <em>own</em> contract numbers in 48 hours, before you pay a cent.</p>
       <p class="antipitch reveal d1">We can't promise you'll win a contract — that's not how FAR works. We promise you'll never miss a winnable bid or recompete again.</p>
       <p class="heroline reveal" data-p="heroline" style="display:none"></p>
@@ -316,7 +319,8 @@
         <span class="lab">Working with</span>
         <div class="marks">
           <img class="cl" src="img/starside.png" alt="Starside Security">
-          <span class="bhmark"><span class="sq">BH</span><span class="wm">Base Hill<span>Base Maintenance · Janitorial</span></span></span>
+          <span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span>
+          <span style="display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mutemono)">delivering at <span class="nellislogo" style="font-size:1.4rem">nellis</span> <span style="font-size:.62rem">AFB</span></span>
         </div>
       </div>
 
@@ -410,10 +414,10 @@
     <div class="quote reveal">
       <div class="bar"></div>
       <div class="in">
-        <div class="badge"><span class="bhmark"><span class="sq" style="width:64px;height:64px;font-size:1.5rem">BH</span></span><span class="stars">★★★★★</span></div>
+        <div class="badge"><span class="bhlogo lg"><span>BASE</span><span class="dot"></span><span>HILL</span></span><span class="stars">★★★★★</span></div>
         <div>
           <p class="q">We went from drowning in opportunity emails to three bids a week that actually fit — each with a straight bid/no-bid call. He does the watching so we can keep working.</p>
-          <p class="who">— <b>Operations Lead</b>, Base Hill, Inc. · Base Maintenance & Janitorial</p>
+          <p class="who">— <b>Operations Lead</b>, Base Hill, Inc. · Base Maintenance & Janitorial · <span class="nellislogo" style="font-size:.95rem;vertical-align:-1px">nellis</span> AFB</p>
         </div>
       </div>
     </div>
@@ -503,7 +507,7 @@
 <footer>
   <div class="in">
     <span style="font-family:var(--display);font-size:1.2rem;color:#ece3cf">Contract Fetch</span> &nbsp;·&nbsp; Federal Capture Intelligence &nbsp;·&nbsp; Est. MMXXVI
-    <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span style="color:#9fb1c4;font-family:var(--display);font-size:.95rem">Base Hill, Inc.</span></div>
+    <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span></div>
     <p style="margin:14px 0 2px;color:#9fb1c4;line-height:1.8">400 Spectrum Center Drive, Suite 909 &middot; Irvine, CA 92618<br><a href="mailto:coventry@getcontractfetch.com" style="color:#bb9c5e;text-decoration:none">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503" style="color:#bb9c5e;text-decoration:none">(202) 503-4503</a></p>
     <p class="far">Contract Fetch provides capture research and proposal support for small federal contractors. Fees are never contingent on whether you win an award (FAR 52.203-5). We work with one firm per solicitation to avoid organizational conflicts of interest (FAR 9.5). All contract and financial data is drawn from authoritative government sources. © 2026 Contract Fetch.</p>
   </div>
