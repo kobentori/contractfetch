@@ -87,6 +87,16 @@
   .hero h1{margin-top:.15em}
   .hero .sub{font-family:var(--body);font-size:clamp(1.18rem,2vw,1.4rem);color:var(--ink-2);max-width:36ch;margin-top:.1em}
   .hero .heroline{font-family:var(--mono);font-size:.84rem;line-height:1.5;color:var(--oxblood);background:var(--paper-2);border-left:3px solid var(--oxblood);padding:10px 14px;margin:20px 0 0;max-width:54ch}
+  .antipitch{font-family:var(--body);font-style:italic;font-size:1.04rem;color:var(--navy);border-left:3px solid var(--gold);padding:5px 0 5px 16px;margin:18px 0 0;max-width:54ch}
+  .ctalink{font-family:var(--mono);font-size:.78rem;color:var(--ink-2);text-decoration:none;align-self:center}
+  .ctalink b{color:var(--navy)}
+  .readbrief{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--mutemono);text-decoration:none}
+  .readbrief:hover{color:var(--oxblood)}
+  .bookassure{list-style:none;margin:18px 0 0;padding:0;max-width:60ch}
+  .bookassure li{position:relative;padding:8px 0 8px 30px;font-size:1.02rem;color:var(--ink-2);border-bottom:1px dotted var(--line)}
+  .bookassure li:last-child{border-bottom:none}
+  .bookassure li b{font-family:var(--display);color:var(--navy);font-weight:600}
+  .bookassure li::before{content:'✓';position:absolute;left:0;top:8px;color:var(--gold);font-family:var(--mono);font-weight:700}
   .herofig{margin:26px 0 2px;display:flex;justify-content:center}
   .radar{width:min(340px,78vw);height:auto}
   .radar .sweep{transform-origin:100px 100px;animation:spin 5.5s linear infinite}
@@ -267,9 +277,10 @@
 
     <!-- HERO -->
     <section class="hero" style="border-top:none">
-      <span class="lbl ox reveal">Capture Brief · The Founding 13</span>
-      <h1 class="reveal">Win contracts with speed and certainty.</h1>
-      <p class="sub reveal d1">We find the bids you can win, draft them for you, and never let a recompete sneak up — proven on your own contract numbers before you pay a cent.</p>
+      <span class="lbl ox reveal">For small federal contractors · The Founding 13</span>
+      <h1 class="reveal">You're registered in SAM.<br>You're still not winning.</h1>
+      <p class="sub reveal d1">We hand you the recompetes worth defending, the bids you can actually win, and the first draft of the proposal — proven on your <em>own</em> contract numbers in 48 hours, before you pay a cent.</p>
+      <p class="antipitch reveal d1">We can't promise you'll win a contract — that's not how FAR works. We promise you'll never miss a winnable bid or recompete again.</p>
       <p class="heroline reveal" data-p="heroline" style="display:none"></p>
 
       <div class="herofig reveal d1" aria-hidden="true">
@@ -296,9 +307,10 @@
       </div>
 
       <div class="cta reveal d2">
-        <a class="btn btn-primary" href="#book" data-p="cta">Claim a founding seat →</a>
-        <a class="btn btn-ghost" href="#offer">Read the brief</a>
+        <a class="btn btn-primary" href="#book" data-p="cta">Get my free Capture Drop →</a>
+        <a class="ctalink" href="tel:+12025034503">or call <b>(202)&nbsp;503-4503</b></a>
       </div>
+      <a class="readbrief reveal d2" href="#offer">↓ read the full brief first</a>
 
       <div class="clients reveal d2">
         <span class="lab">Working with</span>
@@ -355,7 +367,7 @@
     <section id="offer">
       <span class="secnum">§ 03 — The Complete Offer</span>
       <h2>Everything your enrollment includes.</h2>
-      <p class="lead reveal" style="font-style:italic;color:var(--navy)">In 1776, thirteen colonies stopped asking permission. We're opening thirteen founding seats — one firm per niche — and closing them on the Fourth.</p>
+      <p class="lead reveal" style="font-style:italic;color:var(--navy)">In 1776, thirteen colonies stopped asking permission. We're opening thirteen founding seats — one firm per niche — and closing them on the Fourth. Capped at thirteen because every seat gets hands-on capture research from the founder; we won't dilute delivery.</p>
       <div class="schedule reveal">
         <div class="hd"><span class="t">Schedule A — What You Get</span><span class="s">Founding 13 · Independence Day Charter</span></div>
         <div class="grp">
@@ -472,6 +484,11 @@
       <span class="secnum">§ 07 — Claim One Of The Founding 13</span>
       <h2>Book a 30-minute call before the Fourth.</h2>
       <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We'll build your free Capture Drop from your real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
+      <ul class="bookassure reveal">
+        <li><b>30 minutes with Robert, the founder</b> — not a sales rep, no slide deck.</li>
+        <li><b>You leave with a free Capture Drop</b> built on your real federal record — yours to keep whether or not you ever subscribe.</li>
+        <li><b>No obligation.</b> If it's not a fit, you keep the roadmap and we part friends.</li>
+      </ul>
       <div class="calwrap reveal">
         <h3 data-p="bookhdr" style="text-align:center;padding:22px 20px 14px;margin:0;border-bottom:1px solid var(--line)">Your Free 30-Day Federal Capture Roadmap</h3>
         <div class="calendly-inline-widget" id="cal-embed" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:320px;height:680px"></div>
@@ -544,8 +561,9 @@
     if(counted) return; counted=true;
     document.querySelectorAll('[data-count]').forEach(function(el){
       var end=parseInt(el.getAttribute('data-count'),10), t0=null, dur=1100;
-      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); el.textContent=Math.round(end*(p<1?(1-Math.pow(1-p,3)):1)); if(p<1)requestAnimationFrame(step); }
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); el.textContent=Math.round(end*(p<1?(1-Math.pow(1-p,3)):1)); if(p<1)requestAnimationFrame(step); else el.textContent=end; }
       requestAnimationFrame(step);
+      setTimeout(function(){ el.textContent=end; }, dur+250);
     });
   }
   var sb=document.querySelector('.stats');
