@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -24,7 +24,7 @@
     --ink:#211f19;--ink-2:#46423a;--navy:#0d1f31;--navy-2:#16314a;--navy-3:#234a6b;
     --gold:#9a7b3f;--gold-2:#bb9c5e;--oxblood:#6e1f23;--green:#16a34a;
     --line:#d2c8b3;--line-2:#c0b59c;--mutemono:#736a57;
-    --display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Newsreader',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Newsreader',Georgia,serif;--mono:'Hanken Grotesk',ui-sans-serif,system-ui,-apple-system,sans-serif;
     --maxw:1180px;
   }
   *{box-sizing:border-box}
@@ -303,20 +303,6 @@
   <img class="plogo" src="img/press/cbs.svg" alt="CBS" style="height:26px">
   <img class="plogo" src="img/press/cnn.svg" alt="CNN" style="height:23px">
 </div></div>
-<section class="splash" aria-label="Book a call">
-  <div class="bg"></div><div class="ov"></div>
-  <div class="in">
-    <div class="l">
-      <span class="k">★ Founding 13 · closes 04 Jul 2026</span>
-      <h2>Book your free Capture Drop.</h2>
-      <p>30 minutes with the founder. We build a roadmap on <b style="color:#fff" data-p="firm">your</b> real federal record — yours to keep whether or not you ever subscribe.</p>
-      <div class="assure"><span><b>✓</b> 30 minutes</span><span><b>✓</b> no obligation</span><span><b>✓</b> you keep the roadmap</span></div>
-    </div>
-    <div class="splash-cal">
-      <div class="calendly-inline-widget" id="cal-embed-top" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:300px;height:540px"></div>
-    </div>
-  </div>
-</section>
 
 <style>
 .press{background:#fff;border-bottom:1px solid var(--line)}
@@ -329,24 +315,62 @@
 
 <main>
 
-  <!-- ============ HERO + LIVE DROP ============ -->
+<style>
+.hero{align-items:start}
+.hero .famrow{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:15px 34px;margin:26px 0 4px;justify-content:start}
+.hero .famrow .k{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--mutemono);margin-bottom:3px}
+.hero .famrow .v{font-family:var(--display);font-size:1.06rem;font-weight:600;color:var(--navy);line-height:1.12}
+.hero .creds{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:10px}
+.hero .creds li{position:relative;padding-left:23px;font-family:var(--body);font-size:1.04rem;color:var(--ink);line-height:1.35}
+.hero .creds li:before{content:"";position:absolute;left:1px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.herocal{min-width:0}
+.calcard{border:1.5px solid var(--navy);background:#fbfaf4;box-shadow:10px 10px 0 rgba(13,31,49,.07);overflow:hidden}
+.calhd{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--paper-2);border-bottom:1.5px solid var(--navy);padding:12px 16px}
+.calhd .d{width:8px;height:8px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite;flex:none}
+.dropshow{max-width:560px}
+@media(max-width:880px){.hero{grid-template-columns:1fr;gap:30px}.hero .famrow{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+  <!-- ============ HERO + BOOK ============ -->
   <section class="hero wrap">
     <div class="copy">
-      <span class="lbl ox reveal">For <span data-p="niche">small federal contractors</span> · The Founding 13</span>
+      <span class="lbl ox reveal">For <span data-p="niche">small federal contractors</span> · working <span data-p="agency">your agencies</span></span>
       <h1 class="reveal">Are you missing out on the <span class="em">next big bid?</span></h1>
-      <p class="sub reveal d1">A live capture department — built on <b data-p="firm">your</b> real contract record. We hand you the recompetes worth defending, the bids you can win, and the first draft. <b>Free, in 48 hours, before you pay a cent.</b></p>
+      <p class="sub reveal d1">We run capture for a handful of California federal contractors — every recompete on your vehicles tracked, your rivals watched, the first proposal drafted. <b>Built on your real record. Free, in 48 hours.</b></p>
       <p class="heroline reveal" data-p="heroline" style="display:none"></p>
 
-      <div class="cta reveal d2">
-        <a class="btn btn-primary btn-lg" href="#book" data-p="cta">Get my free Capture Drop →</a>
-        <a class="ctalink" href="tel:+12025034503">or call <b>(202)&nbsp;503-4503</b></a>
+      <div class="famrow reveal d1">
+        <div class="fc"><span class="k">Your firm</span><span class="v" data-p="firm">Your firm</span></div>
+        <div class="fc"><span class="k">Federal run-rate</span><span class="v" data-p="runrate">from SAM.gov</span></div>
+        <div class="fc"><span class="k">Top agency</span><span class="v" data-p="agency">from FPDS</span></div>
+        <div class="fc"><span class="k">Nearest recompete</span><span class="v"><span data-p="recompetedays">—</span> days out</span></div>
       </div>
-      <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. You verify the Drop before paying anything.</p>
-      <span class="prov reveal d2"><span class="pd"></span>Sourced from SAM.gov · USAspending · FPDS</span>
+
+      <ul class="creds reveal d2">
+        <li>Recompetes flagged before they surface on SAM</li>
+        <li>Your incumbents &amp; rivals tracked, award by award</li>
+        <li>The first proposal drafted — yours to keep, free</li>
+      </ul>
+
+      <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. Pick a time → we build your Capture Drop live on the call.</p>
+      <a class="ctalink reveal d2" href="tel:+12025034503" style="margin-top:14px;display:inline-block">Prefer to talk first? <b>(202)&nbsp;503-4503</b></a>
     </div>
 
     <!-- THE LIVE CAPTURE DROP -->
-    <div class="dropcol reveal d1">
+    <div class="herocal reveal d1">
+      <div class="calcard">
+        <div class="calhd"><span class="d"></span>Book your free Capture Drop · 30 min</div>
+        <div class="calendly-inline-widget" id="cal-embed-top" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:300px;height:560px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE CAPTURE DROP (showcase) ============ -->
+  <section class="wrap">
+    <span class="secnum reveal">§ 00 — The Deliverable</span>
+    <h2 class="reveal">The Capture Drop we build for <span data-p="firm">your firm</span>.</h2>
+    <p class="reveal" style="max-width:62ch;color:var(--ink-2);margin:-4px 0 28px;font-family:var(--body);font-size:1.1rem">A live sample — your version runs on your real awards, delivered in 48 hours, free to keep.</p>
+    <div class="dropshow reveal d1">
       <div class="drop" aria-label="Sample Capture Drop, redacted">
         <div class="scanline" aria-hidden="true"></div>
         <div class="hdr">
@@ -388,7 +412,7 @@
                   <circle id="dialArc" cx="40" cy="40" r="34" fill="none" stroke="#6e1f23" stroke-width="7" stroke-linecap="round"
                           stroke-dasharray="213.6" stroke-dashoffset="74" transform="rotate(-90 40 40)"/>
                   <text x="40" y="37" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="700" fill="#0d1f31" data-p="recompetedays">90</text>
-                  <text x="40" y="50" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="6.5" letter-spacing="1" fill="#736a57">DAYS</text>
+                  <text x="40" y="50" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="6.5" letter-spacing="1" fill="#736a57">DAYS</text>
                 </svg>
                 <div class="read">
                   <div class="big" data-p="recompete">90 days</div>
