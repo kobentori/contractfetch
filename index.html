@@ -216,7 +216,7 @@
   .sfoot .pr{font-family:var(--display);font-size:1.3rem;color:var(--navy);font-weight:600}.sfoot .pr b{color:var(--oxblood)}
 
   /* ===== guarantee + price ===== */
-  .gp{display:grid;grid-template-columns:1.25fr .85fr;gap:24px;margin-top:24px;align-items:stretch}
+  .gp{display:grid;grid-template-columns:1fr;gap:24px;margin-top:24px;align-items:stretch}
   .guar{border:1.5px solid var(--gold);background:var(--card);padding:26px 28px}
   .guar .q{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem);color:var(--navy);font-style:italic;max-width:44ch}
   .pricec{background:var(--navy);color:#e7dfcb;padding:26px;text-align:center;border-top:3px solid var(--gold);display:flex;flex-direction:column;justify-content:center}
@@ -375,7 +375,9 @@
 .herointel p{margin:0;font-family:var(--body);font-size:1.05rem;line-height:1.5;color:#e4ebf2}
 .herointel b{color:#fff;font-weight:600}
 .band-dark{position:relative;border-top:none;color:#cdd8e3}
-.band-dark::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%);z-index:0}
+.band-dark::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:linear-gradient(180deg,var(--paper) 0%,rgba(244,241,232,0) 56px),linear-gradient(0deg,var(--paper) 0%,rgba(244,241,232,0) 56px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%);z-index:0}
+  #book.band-dark::before{background:linear-gradient(180deg,var(--paper) 0%,rgba(244,241,232,0) 56px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%)}
+  #whatwefound.band-dark::before{background:radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%)}
 .band-dark>*{position:relative;z-index:1}
 .band-dark .secnum{color:#d2ad62}
 .band-dark h2{color:#f7f2e7}
@@ -731,12 +733,6 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
         <span class="lbl">★ The Radar Guarantee</span>
         <p class="q" style="margin-top:12px">"Every month we work your entire federal lane to the floor — every solicitation gated, every recompete clocked, every competitor profiled. If a month's brief ever comes back shallow, that month is free."</p>
         <p class="muted" style="margin-top:12px;max-width:54ch;font-size:.92rem">You never pay a fee tied to whether you win — the guarantee rests on the depth of <em>our</em> research (FAR 52.203-5 clean). We guarantee the work, not the weather.</p>
-      </div>
-      <div class="pricec">
-        <span class="lbl" style="color:var(--gold-2)">Founding 13 · one seat per niche</span>
-        <div class="nm">Founding Charter Seat</div>
-        <div class="pr">$1,000<span> / 4 wks</span></div>
-        <span class="lock">Locked for life · rises to $1,500 at close</span>
       </div>
     </div>
   </section>
