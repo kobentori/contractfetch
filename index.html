@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contract Fetch — Capture Drop</title>
-<meta name="description" content="A live capture-intelligence product for small federal contractors. Get a free, redacted Capture Drop built on your real contract history — in 48 hours, before you pay. Founding 13 closes 04 Jul 2026." />
+<title>Contract Fetch — Federal Bid-Win Plan</title>
+<meta name="description" content="A live capture-intelligence product for small federal contractors. Get a free, redacted Federal Bid-Win Plan built on your real contract history — in 48 hours, before you pay. Founding 13 closes 04 Jul 2026." />
 <script>document.documentElement.className='js';</script>
 
 <!--
@@ -87,7 +87,7 @@
   .prov{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mutemono);margin-top:22px}
   .prov .pd{width:5px;height:5px;border-radius:50%;background:var(--gold)}
 
-  /* ===== THE LIVE CAPTURE DROP (centerpiece) ===== */
+  /* ===== THE LIVE FEDERAL BID-WIN PLAN (centerpiece) ===== */
   .drop{position:relative;border:1.5px solid var(--navy);background:var(--card);box-shadow:10px 10px 0 rgba(13,31,49,.07);min-width:0}
   .drop .scanline{position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(154,123,63,0) 0,rgba(154,123,63,.06) 50%,rgba(154,123,63,0) 100%);background-size:100% 14px;animation:scan 7s linear infinite;mix-blend-mode:multiply;opacity:.5}
   @keyframes scan{to{background-position:0 280px}}
@@ -278,7 +278,7 @@
       <span><span class="nm">Contract Fetch</span><br><span class="tg">Federal Capture Intelligence</span></span>
     </div>
     <span class="live"><span class="d"></span>Drop building for <span style="color:var(--navy);font-weight:500" data-p="firm">your firm</span></span>
-    <a class="btn btn-primary" href="#book" data-p="cta">Get my free Capture Drop →</a>
+    <a class="btn btn-primary" href="#book" data-p="cta">Get my free Federal Bid-Win Plan →</a>
   </div>
 </div>
 
@@ -382,6 +382,16 @@
 .band-dark .situation .cell{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
 .band-dark .situation .k{color:#9fb3c6}
 .band-dark .situation .v{color:#f4f1e8}
+html{scroll-behavior:smooth}
+.drop,.calcard,.quote,.anchor .a,.ps-row,.herointel{transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease}
+.drop:hover,.calcard:hover{transform:translateY(-4px)}
+.anchor .a:hover{transform:translateY(-4px)}
+.ps-row:hover{transform:translateX(4px)}
+.herointel:hover{transform:translateY(-2px)}
+.clients .mk img,.cl{transition:transform .32s ease,filter .32s ease}
+.clients .mk:hover img{transform:scale(1.06)}
+.dial svg [id=dialArc]{transition:stroke-dashoffset 1.1s cubic-bezier(.3,.8,.3,1)}
+a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s ease,filter .22s ease}
 </style>
 
   <!-- ============ HERO + BOOK ============ -->
@@ -404,29 +414,29 @@
         <p>We're tracking <b data-p="contract">your prime vehicle</b> at <b data-p="agency">your top agency</b> — it recompetes in <b data-p="recompetedays">—</b> days, and <b data-p="rival">the incumbent</b> is already positioning. <b data-p="firm">Your firm</b> shouldn't be the last to move.</p>
       </div>
 
-      <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. Pick a time → we build your Capture Drop live on the call.</p>
+      <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. Pick a time → we build your Federal Bid-Win Plan live on the call.</p>
       <a class="ctalink reveal d2" href="tel:+12025034503" style="margin-top:14px;display:inline-block">Prefer to talk first? <b>(202)&nbsp;503-4503</b></a>
     </div>
 
-    <!-- THE LIVE CAPTURE DROP -->
+    <!-- THE LIVE FEDERAL BID-WIN PLAN -->
     <div class="herocal reveal d1">
       <div class="calcard">
-        <div class="calhd"><span class="d"></span>Book your free Capture Drop · 30 min</div>
+        <div class="calhd"><span class="d"></span>Book your free Federal Bid-Win Plan · 30 min</div>
         <div class="calendly-inline-widget" id="cal-embed-top" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:300px;height:560px"></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE CAPTURE DROP (showcase) ============ -->
+  <!-- ============ THE FEDERAL BID-WIN PLAN (showcase) ============ -->
   <section class="wrap">
     <span class="secnum reveal">§ 00 — The Deliverable</span>
-    <h2 class="reveal">The Capture Drop we build for <span data-p="firm">your firm</span>.</h2>
-    <p class="reveal" style="max-width:62ch;color:var(--ink-2);margin:-4px 0 28px;font-family:var(--body);font-size:1.1rem">A live sample — your version runs on your real awards, delivered in 48 hours, free to keep.</p>
+    <h2 class="reveal">The Free 48-Hour Federal Bid-Win Plan,<br>built for <span data-p="firm">your firm</span>.</h2>
+    <p class="reveal" style="max-width:64ch;color:var(--ink-2);margin:-4px 0 28px;font-family:var(--body);font-size:1.12rem">Every winnable bid on your record — <b style="color:var(--navy)">ranked</b>. Recompetes <b style="color:var(--navy)">clocked</b>. Rivals <b style="color:var(--navy)">flagged</b>. Your first proposal <b style="color:var(--navy)">drafted</b>. Built on your real federal awards in 48 hours — yours to keep, free, whether or not you ever subscribe.</p>
     <div class="dropshow reveal d1">
-      <div class="drop" aria-label="Sample Capture Drop, redacted">
+      <div class="drop" aria-label="Sample Federal Bid-Win Plan, redacted">
         <div class="scanline" aria-hidden="true"></div>
         <div class="hdr">
-          <span class="l"><b>CAPTURE DROP</b> — Sample</span>
+          <span class="l"><b>FEDERAL BID-WIN PLAN</b> — Sample</span>
           <span class="live"><span class="d"></span>Live</span>
         </div>
         <div class="meta">
@@ -575,7 +585,7 @@
       <div class="grp">
         <div class="grp-h">II. Charter bonuses — Founding 13 only, free up front</div>
         <ul class="ck">
-          <li><span class="tick">✓</span><span class="txt"><b>The Capture Drop.</b> <span class="d">Your custom roadmap, on your real contracts, in 48 hours.</span></span><span class="val">$2,500</span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>The Federal Bid-Win Plan.</b> <span class="d">Your custom roadmap, on your real contracts, in 48 hours.</span></span><span class="val">$2,500</span></li>
           <li><span class="tick">✓</span><span class="txt"><b>Founding rate, locked for life.</b> <span class="d">$1,000 / 4 weeks before it rises to $1,500 at close.</span></span><span class="val">$6,000+/yr</span></li>
           <li><span class="tick">✓</span><span class="txt"><b>Full dossier on your #1 rival.</b> <span class="d">The incumbent you most need to beat — <span data-p="rival">named in your Drop</span>.</span></span><span class="val">$750</span></li>
           <li><span class="tick">✓</span><span class="txt"><b>Niche exclusivity.</b> <span class="d">We never arm your competitor — structurally true under FAR 9.5.</span></span><span class="val">priceless</span></li>
@@ -591,7 +601,7 @@
       </div>
       <div class="sfoot">
         <span class="av">Engine value <b>$50,000+/yr</b> · Up-front bonuses <b>~$5,000</b> · <b>free</b> until you verify</span>
-        <a class="btn btn-primary" href="#book" data-p="cta">Get my free Capture Drop →</a>
+        <a class="btn btn-primary" href="#book" data-p="cta">Get my free Federal Bid-Win Plan →</a>
       </div>
     </div>
   </section>
@@ -634,10 +644,10 @@
   <section class="wrap band-dark" id="book">
     <span class="secnum reveal">§ 05 — Claim One Of The Founding 13</span>
     <h2 class="reveal">Book the 30-minute call.</h2>
-    <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We build your free Capture Drop from <span data-p="firm">your</span> real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
+    <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We build your free Federal Bid-Win Plan from <span data-p="firm">your</span> real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
     <ul class="bookassure reveal">
       <li><b>30 minutes with Robert, the founder</b> — not a sales rep, no slide deck.</li>
-      <li><b>You leave with a free Capture Drop</b> built on your real federal record — yours to keep, subscribe or not.</li>
+      <li><b>You leave with a free Federal Bid-Win Plan</b> built on your real federal record — yours to keep, subscribe or not.</li>
       <li><b>No obligation.</b> If it's not a fit, you keep the roadmap and we part friends.</li>
     </ul>
     <div class="calwrap reveal">
@@ -651,8 +661,8 @@
 </main>
 
 <footer style="position:relative;overflow:hidden">
-  <div aria-hidden="true" style="position:absolute;inset:0;background:url('img/spectrum.jpg') center 26%/cover;opacity:.17"></div>
-  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(13,31,49,.80),rgba(13,31,49,.96))"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:url('img/spectrum.jpg') center 30%/cover;opacity:.5"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(11,26,42,.55),rgba(9,20,32,.86))"></div>
   <div class="in" style="position:relative">
     <span style="font-family:var(--display);font-size:1.2rem;color:#ece3cf">Contract Fetch</span> &nbsp;·&nbsp; Federal Capture Intelligence &nbsp;·&nbsp; Est. MMXXVI
     <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span><span class="nellislogo">nellis</span></div>
@@ -664,8 +674,8 @@
 <!-- STICKY CTA -->
 <div class="stick" id="stick" aria-hidden="true">
   <div class="in">
-    <div class="t"><span class="sm">Founding 13 · closes 04 Jul 2026</span><br><b>Free Capture Drop on <span data-p="firm">your</span> real awards — 48 h, before you pay.</b></div>
-    <a class="btn" href="#book" data-p="cta">Get my free Capture Drop →</a>
+    <div class="t"><span class="sm">Founding 13 · closes 04 Jul 2026</span><br><b>Free Federal Bid-Win Plan on <span data-p="firm">your</span> real awards — 48 h, before you pay.</b></div>
+    <a class="btn" href="#book" data-p="cta">Get my free Federal Bid-Win Plan →</a>
   </div>
 </div>
 
@@ -685,7 +695,7 @@
       recompetedays=g('recompetedays'), verdict=g('verdict'),
       heroline=g('heroline'), cta=g('cta'), greet=g('greet'), bookhdr=g('bookhdr');
 
-  if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — Capture Drop · Contract Fetch'; }
+  if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — Federal Bid-Win Plan · Contract Fetch'; }
   if(agency){ setText('[data-p=agency]', sub || agency); }
   if(naics)  setText('[data-p=naics]', naics);
   if(niche)  setText('[data-p=niche]', niche);
