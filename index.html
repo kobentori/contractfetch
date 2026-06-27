@@ -311,6 +311,23 @@
   </div>
 </section>
 
+<style>
+.press{background:#fff;border-bottom:1px solid var(--line)}
+.press .pin{max-width:var(--maxw);margin:0 auto;padding:15px 30px;display:flex;align-items:center;justify-content:center;gap:clamp(20px,3vw,42px);flex-wrap:wrap}
+.press .plab{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mutemono)}
+.press .pmk{font-size:1.32rem;font-weight:800;color:#5a5750;letter-spacing:-.01em;line-height:1}
+.press .pmk.bb{font-family:Georgia,'Times New Roman',serif;font-weight:700}
+.press .pmk.cbs{letter-spacing:.04em}
+@media(max-width:600px){.press .pmk{font-size:1.1rem}}
+</style>
+<div class="press"><div class="pin">
+  <span class="plab">As featured in</span>
+  <span class="pmk bb">Bloomberg</span>
+  <span class="pmk">NBC</span>
+  <span class="pmk cbs">CBS</span>
+  <span class="pmk">CNN</span>
+</div></div>
+
 <main>
 
   <!-- ============ HERO + LIVE DROP ============ -->
@@ -558,12 +575,10 @@
 
 </main>
 
-<footer>
-  <div class="in">
-    <figure style="margin:0 0 24px">
-      <img src="img/spectrum.jpg" alt="Contract Fetch offices — 400 Spectrum Center Drive, Irvine Spectrum" style="width:100%;height:210px;object-fit:cover;object-position:center 32%;border:1px solid var(--navy-2);display:block;filter:saturate(.82) brightness(.94)">
-      <figcaption style="font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#74879b;margin-top:8px">Irvine Spectrum · 400 Spectrum Center Drive, Suite 909</figcaption>
-    </figure>
+<footer style="position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:url('img/spectrum.jpg') center 26%/cover;opacity:.17"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(13,31,49,.80),rgba(13,31,49,.96))"></div>
+  <div class="in" style="position:relative">
     <span style="font-family:var(--display);font-size:1.2rem;color:#ece3cf">Contract Fetch</span> &nbsp;·&nbsp; Federal Capture Intelligence &nbsp;·&nbsp; Est. MMXXVI
     <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span><span class="nellislogo">nellis</span></div>
     <p style="margin:14px 0 2px;color:#9fb1c4;line-height:1.8">400 Spectrum Center Drive, Suite 909 &middot; Irvine, CA 92618<br><a href="mailto:coventry@getcontractfetch.com" style="color:#bb9c5e;text-decoration:none">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503" style="color:#bb9c5e;text-decoration:none">(202) 503-4503</a></p>
