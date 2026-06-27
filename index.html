@@ -75,7 +75,7 @@
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,185,140,.55)}70%{box-shadow:0 0 0 7px rgba(95,185,140,0)}100%{box-shadow:0 0 0 0 rgba(95,185,140,0)}}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
-  section{padding:clamp(58px,7vw,92px) 0;border-top:1.5px solid var(--line-2)}
+  section{padding:clamp(74px,7.8vw,104px) 0;border-top:1.5px solid var(--line-2)}
   .lead{font-size:1.22rem;color:var(--ink-2);max-width:60ch}
 
   /* ===== HERO ===== */
@@ -374,9 +374,9 @@
 .herointel .il{display:block;font-family:var(--mono);font-size:.57rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d2ad62;margin-bottom:7px}
 .herointel p{margin:0;font-family:var(--body);font-size:1.05rem;line-height:1.5;color:#e4ebf2}
 .herointel b{color:#fff;font-weight:600}
-.band-dark{position:relative;border-top:none;color:#cdd8e3}
-.band-dark::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:linear-gradient(180deg,var(--paper) 0%,rgba(244,241,232,0) 56px),linear-gradient(0deg,var(--paper) 0%,rgba(244,241,232,0) 56px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%);z-index:0}
-  #book.band-dark::before{background:linear-gradient(180deg,var(--paper) 0%,rgba(244,241,232,0) 56px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%)}
+.band-dark{position:relative;border-top:none;color:#cdd8e3;padding-top:clamp(104px,11vw,140px);padding-bottom:clamp(96px,10vw,128px)}
+.band-dark::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:linear-gradient(180deg,var(--paper) 0,rgba(244,241,232,.62) 30px,rgba(244,241,232,0) 104px),linear-gradient(0deg,var(--paper) 0,rgba(244,241,232,.62) 30px,rgba(244,241,232,0) 104px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%);z-index:0}
+  #book.band-dark::before{background:linear-gradient(180deg,var(--paper) 0,rgba(244,241,232,.62) 30px,rgba(244,241,232,0) 104px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%)}
   #whatwefound.band-dark::before{background:radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%)}
 .band-dark>*{position:relative;z-index:1}
 .band-dark .secnum{color:#d2ad62}
@@ -710,7 +710,7 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
   </section>
 
   <!-- ============ TESTIMONIAL: BASE HILL ============ -->
-  <section class="wrap" style="border-top:none;padding-top:0">
+  <section class="wrap" style="border-top:none">
     <div class="quote reveal">
       <div class="bar"></div>
       <div class="in">
