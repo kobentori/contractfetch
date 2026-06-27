@@ -266,7 +266,8 @@
 </head>
 <body>
 
-<div class="annc"><span class="o">★</span> &nbsp;<b>The Founding 13</b> · Independence Day Charter · Thirteen seats, one per niche · closing 04&nbsp;Jul&nbsp;2026 &nbsp;<span class="o">★</span></div>
+<div class="annc"><span class="o">★</span> &nbsp;<b>The Founding 13</b> · one seat per niche · <span id="cd">closes 04&nbsp;Jul&nbsp;2026</span> &nbsp;<span class="o">★</span></div>
+<script>(function(){var el=document.getElementById('cd');if(!el)return;var t=new Date(2026,6,4,23,59,59);function u(){var d=Math.ceil((t-new Date())/864e5);if(d>1)el.innerHTML='closes in <b>'+d+'&nbsp;days</b> · 04&nbsp;Jul';else if(d===1)el.innerHTML='<b>closes tomorrow</b> · 04&nbsp;Jul';else if(d===0)el.innerHTML='<b>closing today</b>';else el.textContent='applications closed';}u();setInterval(u,36e5);})();</script>
 
 <div class="mast">
   <div class="in">
@@ -349,6 +350,38 @@
 .hero .heroline{background:rgba(255,255,255,.05);border-left-color:#d2ad62;color:#eedab2}
 .hero .calcard{box-shadow:0 28px 66px rgba(0,0,0,.52)}
 .hero .calhd{background:#13283d;color:#f1ead8;border-bottom-color:#d2ad62}
+.herointel{border:1px solid rgba(210,173,98,.4);border-left:3px solid #d2ad62;background:rgba(255,255,255,.045);padding:14px 18px;margin:24px 0 0}
+.herointel .il{display:block;font-family:var(--mono);font-size:.57rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d2ad62;margin-bottom:7px}
+.herointel p{margin:0;font-family:var(--body);font-size:1.05rem;line-height:1.5;color:#e4ebf2}
+.herointel b{color:#fff;font-weight:600}
+.band-dark{position:relative;border-top:none;color:#cdd8e3}
+.band-dark::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%);z-index:0}
+.band-dark>*{position:relative;z-index:1}
+.band-dark .secnum{color:#d2ad62}
+.band-dark h2{color:#f7f2e7}
+.band-dark h2 em{color:#e8cd88}
+.band-dark .lead,.band-dark>p{color:#cdd8e3}
+.band-dark .lead b,.band-dark>p b{color:#fff}
+.band-dark>p a,.band-dark .lead a{color:#e8cd88}
+.band-dark .anchor .a{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
+.band-dark .anchor .k{color:#9fb3c6}
+.band-dark .anchor .n{color:#f4f1e8}
+.band-dark .anchor .n s{color:#7c92a6}
+.band-dark .anchor .sm{color:#9fb3c6}
+.band-dark .anchor .a.us{background:rgba(210,173,98,.15);border-color:#d2ad62}
+.band-dark .anchor .a.us .n{color:#f3dca0}
+.band-dark .ps-ico{color:#d2ad62}
+.band-dark .ps-prob{color:#f4eee2}
+.band-dark .ps-sol{color:#cbd6e2}
+.band-dark .ps-sol b{color:#e8cd88}
+.band-dark .ps-row{border-color:rgba(255,255,255,.1)}
+.band-dark .bookassure li{color:#dde6ef}
+.band-dark .bookassure li b{color:#fff}
+.band-dark .calwrap{background:#fbfaf4;border-color:#d2ad62;box-shadow:0 28px 66px rgba(0,0,0,.5)}
+.band-dark .calwrap h3{color:var(--navy);border-bottom-color:var(--line)}
+.band-dark .situation .cell{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.band-dark .situation .k{color:#9fb3c6}
+.band-dark .situation .v{color:#f4f1e8}
 </style>
 
   <!-- ============ HERO + BOOK ============ -->
@@ -366,11 +399,10 @@
         <div class="fc"><span class="k">Nearest recompete</span><span class="v"><span data-p="recompetedays">—</span> days out</span></div>
       </div>
 
-      <ul class="creds reveal d2">
-        <li>Recompetes flagged before they surface on SAM</li>
-        <li>Your incumbents &amp; rivals tracked, award by award</li>
-        <li>The first proposal drafted — yours to keep, free</li>
-      </ul>
+      <div class="herointel reveal d2">
+        <span class="il">● Live intel · your federal record</span>
+        <p>We're tracking <b data-p="contract">your prime vehicle</b> at <b data-p="agency">your top agency</b> — it recompetes in <b data-p="recompetedays">—</b> days, and <b data-p="rival">the incumbent</b> is already positioning. <b data-p="firm">Your firm</b> shouldn't be the last to move.</p>
+      </div>
 
       <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. Pick a time → we build your Capture Drop live on the call.</p>
       <a class="ctalink reveal d2" href="tel:+12025034503" style="margin-top:14px;display:inline-block">Prefer to talk first? <b>(202)&nbsp;503-4503</b></a>
@@ -470,7 +502,7 @@
   </section>
 
   <!-- ============ PRICE ANCHOR ============ -->
-  <section class="wrap" style="padding-top:42px">
+  <section class="wrap band-dark" style="padding-top:42px">
     <div class="situation reveal" id="situation" style="display:none;margin-top:0;margin-bottom:30px">
       <div class="cell"><span class="k">Annual run-rate</span><span class="v" data-p="runrate">—</span></div>
       <div class="cell"><span class="k">Top agency</span><span class="v" data-p="agency">—</span></div>
@@ -512,7 +544,7 @@
   </section>
 
   <!-- ============ PROBLEM -> SOLUTION ============ -->
-  <section class="wrap" id="solution">
+  <section class="wrap band-dark" id="solution">
     <span class="secnum reveal">§ 02 — Findings → Action</span>
     <h2 class="reveal">The bid you could have won<br>closed before you saw it.</h2>
     <div class="ps">
@@ -599,7 +631,7 @@
   </section>
 
   <!-- ============ BOOK ============ -->
-  <section class="wrap" id="book">
+  <section class="wrap band-dark" id="book">
     <span class="secnum reveal">§ 05 — Claim One Of The Founding 13</span>
     <h2 class="reveal">Book the 30-minute call.</h2>
     <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We build your free Capture Drop from <span data-p="firm">your</span> real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
