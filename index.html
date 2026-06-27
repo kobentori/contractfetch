@@ -296,6 +296,13 @@
 .splash .assure b{color:#5fb98c}
 @media(max-width:760px){.splash .in{flex-direction:column;align-items:flex-start}}
 </style>
+<div class="press"><div class="pin">
+  <span class="plab">As featured in</span>
+  <img class="plogo" src="img/press/bloomberg.svg" alt="Bloomberg" style="height:19px">
+  <img class="plogo" src="img/press/nbc.svg" alt="NBC" style="height:30px">
+  <img class="plogo" src="img/press/cbs.svg" alt="CBS" style="height:26px">
+  <img class="plogo" src="img/press/cnn.svg" alt="CNN" style="height:23px">
+</div></div>
 <section class="splash" aria-label="Book a call">
   <div class="bg"></div><div class="ov"></div>
   <div class="in">
@@ -314,19 +321,11 @@
 <style>
 .press{background:#fff;border-bottom:1px solid var(--line)}
 .press .pin{max-width:var(--maxw);margin:0 auto;padding:15px 30px;display:flex;align-items:center;justify-content:center;gap:clamp(20px,3vw,42px);flex-wrap:wrap}
-.press .plab{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mutemono)}
-.press .pmk{font-size:1.32rem;font-weight:800;color:#5a5750;letter-spacing:-.01em;line-height:1}
-.press .pmk.bb{font-family:Georgia,'Times New Roman',serif;font-weight:700}
-.press .pmk.cbs{letter-spacing:.04em}
-@media(max-width:600px){.press .pmk{font-size:1.1rem}}
+.press .plab{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mutemono);white-space:nowrap}
+.press .plogo{filter:grayscale(1);opacity:.58;transition:opacity .22s ease,filter .22s ease}
+.press .plogo:hover{filter:grayscale(0);opacity:1}
+@media(max-width:600px){.press .pin{gap:22px}.press .plogo{transform:scale(.85)}}
 </style>
-<div class="press"><div class="pin">
-  <span class="plab">As featured in</span>
-  <span class="pmk bb">Bloomberg</span>
-  <span class="pmk">NBC</span>
-  <span class="pmk cbs">CBS</span>
-  <span class="pmk">CNN</span>
-</div></div>
 
 <main>
 
