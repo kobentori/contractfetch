@@ -354,13 +354,13 @@
 .hero .ctalink{color:#c2d0df}
 .hero .ctalink b{color:#fff}
 .hero .heroline{background:rgba(255,255,255,.05);border-left-color:#d2ad62;color:#eedab2}
-.hero .calcard{border:3px solid #e0bd6e;box-shadow:0 0 0 6px rgba(210,173,98,.24),0 0 52px rgba(224,189,110,.32),0 30px 72px rgba(0,0,0,.5)}
+.hero .calcard{border:4px solid #e0bd6e;box-shadow:0 0 0 6px rgba(210,173,98,.24),0 0 52px rgba(224,189,110,.32),0 30px 72px rgba(0,0,0,.5)}
 .hero .calhd{background:linear-gradient(180deg,#bb1f27,#8d1318);color:#fff;border-bottom:1px solid #76090f;font-weight:700;font-size:.7rem;padding:13px 16px}
 .hero .heroproof{font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:#8ba1b6;margin:20px 0 0}
 .hero .capnote{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:#9fb3c6;margin:14px 0 0}
 .circled{position:relative;display:inline-block;white-space:nowrap}
-.circled .ring{position:absolute;left:-16%;top:-28%;width:132%;height:170%;overflow:visible;pointer-events:none;z-index:2}
-.circled .ring path{stroke-dasharray:900;stroke-dashoffset:900;animation:drawcircle 1.15s cubic-bezier(.55,.1,.3,1) .5s forwards}
+.circled .ring{position:absolute;left:-22%;top:-40%;width:144%;height:192%;overflow:visible;pointer-events:none;z-index:2}
+.circled .ring path{stroke-dasharray:900;stroke-dashoffset:900;animation:drawcircle 1.3s linear .5s forwards}
 @keyframes drawcircle{to{stroke-dashoffset:0}}
 @media(prefers-reduced-motion:reduce){.circled .ring path{stroke-dashoffset:0;animation:none}}
 .hero .cta{margin-top:24px}
@@ -426,7 +426,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
   <section class="hero wrap">
     <div class="copy">
       <span class="lbl reveal">Federal Capture Intelligence</span>
-      <h1 class="reveal">We mapped <span data-p="firm">your company</span>'s next federal win. <span class="em">It's <span class="circled">free<svg class="ring" viewBox="0 0 240 104" preserveAspectRatio="none" aria-hidden="true"><path d="M194 36 C156 13 74 8 38 27 C7 43 6 71 39 84 C82 99 160 92 199 70 C228 55 221 31 185 21 C146 9 66 13 33 32 C9 47 16 72 47 83 C90 98 158 88 197 69 C211 62 216 55 213 47" fill="none" stroke="#e02029" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></span>, and it's yours.</span></h1>
+      <h1 class="reveal">We mapped <span data-p="firm">your company</span>'s next federal win. <span class="em">It's <span class="circled">free<svg class="ring" viewBox="0 0 240 104" preserveAspectRatio="none" aria-hidden="true"><path id="freering" d="M194 36 C156 13 74 8 38 27 C7 43 6 71 39 84 C82 99 160 92 199 70 C228 55 221 31 185 21 C146 9 66 13 33 32 C9 47 16 72 47 83 C90 98 158 88 197 69 C211 62 216 55 213 47" fill="none" stroke="#e02029" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><g id="marker" opacity="0"><ellipse cx="0" cy="-7" rx="3.6" ry="8.5" fill="#232323"/><circle cx="0" cy="0" r="3.4" fill="#e02029"/><animateMotion begin="0.5s" dur="1.3s" fill="freeze"><mpath href="#freering"/></animateMotion><set attributeName="opacity" to="1" begin="0.5s"/><animate attributeName="opacity" begin="1.75s" dur="0.35s" from="1" to="0" fill="freeze"/></g></svg></span>, and it's yours.</span></h1>
       <p class="sub reveal d1"><b><span data-p="firm">Your company</span>'s Celebrate America 30-Day Contracting Capture Sprint</b> — a custom capture roadmap for <span data-p="niche">your federal niche</span>. The live opportunities you qualify for, who's buying, and the exact path to the bid. Built before you ever talk to us. No pitch, no obligation.</p>
     </div>
 
