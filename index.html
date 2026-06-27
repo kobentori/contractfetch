@@ -63,14 +63,16 @@
   .mast .in{max-width:var(--maxw);margin:0 auto;padding:14px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand .nm{font-family:var(--display);font-size:1.4rem;font-weight:600;color:var(--navy);line-height:1}
-  .brand .tg{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mutemono);margin-top:5px}
-  .mast .live{display:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);align-items:center;gap:7px;margin-left:auto;margin-right:18px}
+  .brand .tg{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mutemono);margin-top:5px;white-space:nowrap}
+  .mast a.btn{white-space:nowrap}
+  .mast .in{gap:24px}
+  .mast .live{display:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);align-items:center;gap:7px;margin-left:auto;margin-right:18px;max-width:32ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .mast .live .d{width:7px;height:7px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite}
-  @media(min-width:720px){.mast .live{display:flex}}
+  @media(min-width:1040px){.mast .live{display:flex}}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,185,140,.55)}70%{box-shadow:0 0 0 7px rgba(95,185,140,0)}100%{box-shadow:0 0 0 0 rgba(95,185,140,0)}}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
-  section{padding:60px 0;border-top:1.5px solid var(--line-2)}
+  section{padding:clamp(58px,7vw,92px) 0;border-top:1.5px solid var(--line-2)}
   .lead{font-size:1.22rem;color:var(--ink-2);max-width:60ch}
 
   /* ===== HERO ===== */
@@ -418,7 +420,6 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
         <a class="btn btn-primary btn-lg" href="#book">Review your private briefing →</a>
         <a class="ctalink" href="tel:+12025034503">or call <b>(202)&nbsp;503-4503</b></a>
       </div>
-      <p class="heroproof reveal d2">Built on SAM.gov · USAspending · FPDS award data.</p>
     </div>
 
     <!-- THE LIVE FEDERAL BID-WIN PLAN -->
@@ -442,7 +443,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     </div>
     <div class="herointel reveal d2">
       <span class="il">● Live intel</span>
-      <p>We're already tracking <b data-p="contract">your prime vehicle</b> at <b data-p="agency">your top agency</b> — it recompetes in <b data-p="recompetedays">—</b> days, and <b data-p="rival">the incumbent</b> is positioning. Your briefing names every winnable pursuit.</p>
+      <p>We're already tracking <b data-p="contract">your prime vehicle</b> at <b data-p="agency">your top agency</b> — it recompetes in <b data-p="recompetedays">—</b> days, and <b data-p="rival">the firm that holds it now</b> is already moving on it. Your briefing names every pursuit you can win.</p>
     </div>
   </section>
 
@@ -475,7 +476,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
             <li>
               <span class="verdict watch">WATCH</span>
               <span class="ttl">Regional IDIQ — <span data-p="niche">your lane</span></span>
-              <span class="sub">FPDS · <span class="redact">W912&#8209;25&#8209;D&#8209;██</span> · incumbent <span data-p="rival">incumbent</span></span>
+              <span class="sub">FPDS · <span class="redact">W912&#8209;25&#8209;D&#8209;██</span> · held by <span data-p="rival">the firm that holds it now</span></span>
             </li>
             <li>
               <span class="verdict no">NO-BID</span>
@@ -514,17 +515,13 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
                 <div class="read">
                   <div class="lab">Based in</div>
                   <div class="city"><span data-p="city">Your City</span>, <span data-p="state">CA</span></div>
-                  <div class="rl">#1 rival to beat:<br><b data-p="rival">the incumbent</b></div>
+                  <div class="rl">Top contract to win:<br><b data-p="rival">named in your briefing</b></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="foot">
-          <span>SAM · USAspending · FPDS</span>
-          <span class="cls">Unclassified // Planning Use</span>
-        </div>
       </div>
       <p class="dropcap">This is a <b>sample</b>. Your live Plan runs on <b data-p="firm">your</b> real awards — built in 48 hours, free.</p>
     </div>
@@ -635,7 +632,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     <span class="lbl reveal">Founding 13 · one seat per niche</span>
     <h2 class="reveal">Book your private briefing.</h2>
     <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We build your free Federal Bid-Win Plan from <span data-p="firm">your</span> real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
-    <div class="foundercard reveal"><img src="img/robert.jpg" alt="Robert J. Coventry III"><div><div class="fn">Robert J. Coventry III</div><div class="ft">Founder · builds every Plan himself</div></div></div>
+    <div class="foundercard reveal"><img src="img/robert.jpg?v=2" alt="Robert J. Coventry III"><div><div class="fn">Robert J. Coventry III</div><div class="ft">Founder &amp; Lead Analyst</div></div></div>
     <ul class="bookassure reveal">
       <li><b>30 minutes with Robert, the founder</b> — not a sales rep, no slide deck.</li>
       <li><b>You leave with a free Federal Bid-Win Plan</b> built on your real federal record — yours to keep, subscribe or not.</li>
