@@ -50,8 +50,8 @@
   @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none}*{animation:none!important;transition:none!important}}
 
   .btn{display:inline-block;font-family:var(--mono);font-weight:500;font-size:.84rem;letter-spacing:.07em;text-transform:uppercase;padding:16px 28px;cursor:pointer;border:1.5px solid var(--navy);transition:.15s;border-radius:0;text-decoration:none;text-align:center}
-  .btn-primary{background:var(--navy);color:#f1ead8;box-shadow:4px 4px 0 rgba(13,31,49,.14)}
-  .btn-primary:hover{background:var(--oxblood);border-color:var(--oxblood);color:#fff;transform:translate(-1px,-1px);box-shadow:6px 6px 0 rgba(110,31,35,.18)}
+  .btn-primary{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:600;box-shadow:4px 4px 0 rgba(154,123,63,.24)}
+  .btn-primary:hover{background:#b08f49;border-color:#b08f49;color:#120c03;transform:translate(-1px,-2px);box-shadow:7px 7px 0 rgba(154,123,63,.30)}
   .btn-lg{padding:19px 36px;font-size:.9rem}
 
   .annc{background:var(--navy);color:#e7dfcb;font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:9px 14px;border-bottom:2px solid var(--gold)}
@@ -329,6 +329,26 @@
 .calhd .d{width:8px;height:8px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite;flex:none}
 .dropshow{max-width:560px}
 @media(max-width:880px){.hero{grid-template-columns:1fr;gap:30px}.hero .famrow{grid-template-columns:repeat(2,1fr)}}
+.hero{position:relative;padding-bottom:62px}
+.hero::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(125% 130% at 15% -12%, #1c3e5c 0%, #0d2236 46%, #06121e 100%);z-index:0}
+.hero::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(44% 56% at 24% 22%, rgba(205,168,96,.20), transparent 68%);z-index:0;pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.hero .lbl,.hero .lbl.ox{color:#d2ad62}
+.hero h1{color:#f7f2e7}
+.hero h1 .em{color:#e8cd88}
+.hero .sub{color:#d3dee9}
+.hero .sub b{color:#fff}
+.hero .famrow .k{color:#8ba1b6}
+.hero .famrow .v{color:#f4f1e8}
+.hero .creds li{color:#dde6ef}
+.hero .creds li:before{background:#d2ad62}
+.hero .heronote{color:#95a9bc}
+.hero .heronote b{color:#eff4f9}
+.hero .ctalink{color:#c2d0df}
+.hero .ctalink b{color:#fff}
+.hero .heroline{background:rgba(255,255,255,.05);border-left-color:#d2ad62;color:#eedab2}
+.hero .calcard{box-shadow:0 28px 66px rgba(0,0,0,.52)}
+.hero .calhd{background:#13283d;color:#f1ead8;border-bottom-color:#d2ad62}
 </style>
 
   <!-- ============ HERO + BOOK ============ -->
