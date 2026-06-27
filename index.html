@@ -52,8 +52,11 @@
   @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none}*{animation:none!important;transition:none!important}}
 
   .btn{display:inline-block;font-family:var(--mono);font-weight:500;font-size:.84rem;letter-spacing:.07em;text-transform:uppercase;padding:16px 28px;cursor:pointer;border:1.5px solid var(--navy);transition:.15s;border-radius:0;text-decoration:none;text-align:center}
-  .btn-primary{background:linear-gradient(180deg,#bb1f27,#8d1318);color:#fff;border:1px solid #76090f;font-weight:600;letter-spacing:.08em;box-shadow:0 5px 16px rgba(140,19,24,.42),inset 0 1px 0 rgba(255,255,255,.22)}
+  .btn-primary{position:relative;overflow:hidden;background:linear-gradient(180deg,#bb1f27,#8d1318);color:#fff;border:1px solid #76090f;font-weight:600;letter-spacing:.08em;box-shadow:0 5px 16px rgba(140,19,24,.42),inset 0 1px 0 rgba(255,255,255,.22)}
   .btn-primary:hover{background:linear-gradient(180deg,#d3232c,#a3151c);border-color:#8d1318;color:#fff;transform:translateY(-2px);box-shadow:0 11px 28px rgba(140,19,24,.5),inset 0 1px 0 rgba(255,255,255,.28)}
+  .btn-primary>*{position:relative;z-index:1}
+  .btn-primary::after{content:"";position:absolute;top:-10%;left:-75%;width:48%;height:120%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);pointer-events:none;animation:shine 5s ease-in-out infinite}
+  @keyframes shine{0%,22%{left:-75%}44%,100%{left:150%}}
   .btn-lg{padding:19px 36px;font-size:.9rem}
 
   .annc{background:var(--navy);color:#e7dfcb;font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:9px 14px;border-bottom:2px solid var(--gold)}
@@ -62,7 +65,7 @@
   .mast{border-bottom:1.5px solid var(--navy);background:linear-gradient(rgba(244,241,232,.9),rgba(244,241,232,.95)),url('img/capitol.jpg') center 24%/cover;backdrop-filter:blur(7px);position:sticky;top:0;z-index:40}
   .mast .in{max-width:var(--maxw);margin:0 auto;padding:14px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand .nm{font-family:var(--display);font-size:1.4rem;font-weight:600;color:var(--navy);line-height:1}
+  .brand .nm{font-family:var(--display);font-size:1.72rem;font-weight:600;color:var(--navy);line-height:1}
   .brand .tg{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mutemono);margin-top:5px;white-space:nowrap}
   .mast a.btn{white-space:nowrap;padding:10px 18px;font-size:.74rem}
   .mast .in{gap:24px}
@@ -277,7 +280,7 @@
   <div class="in">
     <div class="brand">
       <span aria-hidden="true">
-        <img src="img/logo.png" alt="Contract Fetch" style="height:58px;width:auto;display:block;margin-right:4px">
+        <img src="img/logo.png" alt="Contract Fetch" style="height:70px;width:auto;display:block;margin-right:4px">
       </span>
       <span><span class="nm">Contract Fetch</span><br><span class="tg">Find. Pursue. Win.</span></span>
     </div>
@@ -309,7 +312,7 @@
 </div></div>
 
 <style>
-.press{background:#fff;border-bottom:1px solid var(--line)}
+.press{background:#efe9dd;border-bottom:1px solid var(--line)}
 .press .pin{max-width:var(--maxw);margin:0 auto;padding:15px 30px;display:flex;align-items:center;justify-content:center;gap:clamp(20px,3vw,42px);flex-wrap:wrap}
 .press .plab{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mutemono);white-space:nowrap}
 .press .plogo{filter:grayscale(1);opacity:.58;transition:opacity .22s ease,filter .22s ease}
