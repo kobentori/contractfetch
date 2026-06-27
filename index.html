@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contract Fetch — Capture Brief</title>
-<meta name="description" content="A capture brief for federal contractors: never miss or lose a winnable contract again. Independence Day Founding Cohort — closes July 4, 2026." />
+<title>Contract Fetch — Capture Drop</title>
+<meta name="description" content="A live capture-intelligence product for small federal contractors. Get a free, redacted Capture Drop built on your real contract history — in 48 hours, before you pay. Founding 13 closes 04 Jul 2026." />
 <script>document.documentElement.className='js';</script>
 
 <!--
-  PERSONALIZATION via URL params (per firm): ?firm=&contact=&agency=&subagency=&runrate=&recompete=&contract=&naics=&city=&state=&niche=
-  Generate links with web/make_links.py. Contact: coventry@getcontractfetch.com (202) 503-4503
+  PERSONALIZATION via URL params (per firm). Existing hooks preserved + extended.
+  ?firm=&contact=&agency=&subagency=&recompete=&runrate=&heroline=&cta=&greet=&bookhdr=
+  NEW: &contract=&rival=&naics=&niche=&city=&state=&matches=&recompetedays=&verdict=
+  Generate links with web/make_links.py · coventry@getcontractfetch.com · (202) 503-4503
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,19 +21,20 @@
 <style>
   :root{
     --paper:#f4f1e8;--paper-2:#ece6d7;--paper-3:#e3dcc9;--card:#fbfaf4;
-    --ink:#211f19;--ink-2:#46423a;--navy:#0d1f31;--navy-2:#16314a;
-    --gold:#9a7b3f;--gold-2:#bb9c5e;--oxblood:#6e1f23;--line:#d2c8b3;--line-2:#c0b59c;--mutemono:#736a57;
+    --ink:#211f19;--ink-2:#46423a;--navy:#0d1f31;--navy-2:#16314a;--navy-3:#234a6b;
+    --gold:#9a7b3f;--gold-2:#bb9c5e;--oxblood:#6e1f23;--green:#16a34a;
+    --line:#d2c8b3;--line-2:#c0b59c;--mutemono:#736a57;
     --display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Newsreader',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
-    --maxw:1160px;
+    --maxw:1180px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  [id]{scroll-margin-top:92px}
-  body{margin:0;font-family:var(--body);color:var(--ink);font-size:18px;line-height:1.6;background-color:var(--paper);
+  [id]{scroll-margin-top:96px}
+  body{margin:0;font-family:var(--body);color:var(--ink);font-size:18px;line-height:1.58;background-color:var(--paper);
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");-webkit-font-smoothing:antialiased;}
-  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0 0 .45em;color:var(--navy);letter-spacing:-.01em}
-  h1{font-size:clamp(2.5rem,5.4vw,4.1rem)}
-  h2{font-size:clamp(1.7rem,3.3vw,2.4rem)}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.06;margin:0 0 .42em;color:var(--navy);letter-spacing:-.012em}
+  h1{font-size:clamp(2.7rem,6vw,4.6rem)}
+  h2{font-size:clamp(1.8rem,3.5vw,2.6rem)}
   h3{font-size:1.18rem;letter-spacing:0}
   p{margin:0 0 1em}
   a{color:var(--oxblood)}
@@ -41,122 +44,144 @@
   .lbl.ox{color:var(--oxblood)}
   .secnum{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--mutemono);text-transform:uppercase;display:block;margin-bottom:10px}
 
-  /* reveal-on-scroll (JS-gated; visible without JS) */
-  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
   .js .reveal.in{opacity:1;transform:none}
-  .js .reveal.d1{transition-delay:.08s}.js .reveal.d2{transition-delay:.16s}.js .reveal.d3{transition-delay:.24s}
-  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none}*{animation:none!important}}
+  .js .reveal.d1{transition-delay:.08s}.js .reveal.d2{transition-delay:.16s}.js .reveal.d3{transition-delay:.24s}.js .reveal.d4{transition-delay:.32s}
+  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none}*{animation:none!important;transition:none!important}}
 
-  .btn{display:inline-block;font-family:var(--mono);font-weight:500;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;padding:15px 26px;cursor:pointer;border:1.5px solid var(--navy);transition:.14s;border-radius:0;text-decoration:none}
-  .btn-primary{background:var(--navy);color:#f1ead8}
-  .btn-primary:hover{background:var(--oxblood);border-color:var(--oxblood);color:#fff;transform:translateY(-1px)}
-  .btn-ghost{background:transparent;color:var(--navy)}
-  .btn-ghost:hover{background:var(--navy);color:#f1ead8}
+  .btn{display:inline-block;font-family:var(--mono);font-weight:500;font-size:.84rem;letter-spacing:.07em;text-transform:uppercase;padding:16px 28px;cursor:pointer;border:1.5px solid var(--navy);transition:.15s;border-radius:0;text-decoration:none;text-align:center}
+  .btn-primary{background:var(--navy);color:#f1ead8;box-shadow:4px 4px 0 rgba(13,31,49,.14)}
+  .btn-primary:hover{background:var(--oxblood);border-color:var(--oxblood);color:#fff;transform:translate(-1px,-1px);box-shadow:6px 6px 0 rgba(110,31,35,.18)}
+  .btn-lg{padding:19px 36px;font-size:.9rem}
 
   .annc{background:var(--navy);color:#e7dfcb;font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:9px 14px;border-bottom:2px solid var(--gold)}
   .annc b{color:#fff}.annc .o{color:var(--gold-2)}
 
-  .mast{border-bottom:1.5px solid var(--navy);background:rgba(244,241,232,.92);backdrop-filter:blur(6px);position:sticky;top:0;z-index:30}
+  .mast{border-bottom:1.5px solid var(--navy);background:rgba(244,241,232,.93);backdrop-filter:blur(7px);position:sticky;top:0;z-index:40}
   .mast .in{max-width:var(--maxw);margin:0 auto;padding:14px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand .nm{font-family:var(--display);font-size:1.4rem;font-weight:600;color:var(--navy);line-height:1}
-  .brand .tg{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mutemono);margin-top:5px}
-
-  .doc{max-width:var(--maxw);margin:0 auto;padding:0 30px;display:grid;grid-template-columns:248px 1fr;gap:48px;align-items:start}
-  .rail{position:sticky;top:84px;padding-top:54px}
-  .filecard{border:1.5px solid var(--navy);background:var(--card)}
-  .filecard .top{background:var(--navy);color:#e7dfcb;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
-  .filecard .top .dot{width:7px;height:7px;border-radius:50%;background:#5fb98c;box-shadow:0 0 0 0 rgba(95,185,140,.6);animation:pulse 2.4s infinite}
+  .brand .tg{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mutemono);margin-top:5px}
+  .mast .live{display:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);align-items:center;gap:7px;margin-left:auto;margin-right:18px}
+  .mast .live .d{width:7px;height:7px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite}
+  @media(min-width:720px){.mast .live{display:flex}}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,185,140,.55)}70%{box-shadow:0 0 0 7px rgba(95,185,140,0)}100%{box-shadow:0 0 0 0 rgba(95,185,140,0)}}
-  .filecard .bd{padding:14px 14px 16px;font-family:var(--mono);font-size:.72rem;line-height:1.5;color:var(--ink-2)}
-  .filecard .k{color:var(--mutemono);letter-spacing:.08em;font-size:.62rem;text-transform:uppercase;display:block;margin:10px 0 2px}
-  .filecard .k:first-child{margin-top:0}
-  .filecard .v{color:var(--navy);font-weight:500}
-  .filecard .v.firm{font-family:var(--display);font-size:1.05rem;font-weight:600;line-height:1.15;display:block}
-  .filecard .cls{margin-top:14px;border-top:1px dashed var(--line-2);padding-top:10px;color:var(--oxblood);font-size:.62rem;letter-spacing:.08em}
-  .railseal{display:flex;justify-content:center;margin-bottom:18px}
-  .railclients{margin-top:18px;border:1px solid var(--line-2);background:var(--paper-2);padding:12px}
-  .railclients .h{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);margin-bottom:9px}
-  .railclients .row{display:flex;align-items:center;gap:9px;margin:7px 0;font-family:var(--mono);font-size:.66rem;color:var(--navy)}
-  .railclients .row svg,.railclients .row img{flex:none}
 
-  .content{padding-top:54px;min-width:0;max-width:780px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
+  section{padding:60px 0;border-top:1.5px solid var(--line-2)}
+  .lead{font-size:1.22rem;color:var(--ink-2);max-width:60ch}
 
-  /* hero */
-  .hero{position:relative}
-  .hero h1{margin-top:.15em}
-  .hero .sub{font-family:var(--body);font-size:clamp(1.18rem,2vw,1.4rem);color:var(--ink-2);max-width:36ch;margin-top:.1em}
-  .hero .heroline{font-family:var(--mono);font-size:.84rem;line-height:1.5;color:var(--oxblood);background:var(--paper-2);border-left:3px solid var(--oxblood);padding:10px 14px;margin:20px 0 0;max-width:54ch}
-  .antipitch{font-family:var(--body);font-style:italic;font-size:1.04rem;color:var(--navy);border-left:3px solid var(--gold);padding:5px 0 5px 16px;margin:18px 0 0;max-width:54ch}
+  /* ===== HERO ===== */
+  .hero{padding-top:54px;border-top:none;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .hero .copy{min-width:0}
+  .hero h1{margin-top:.1em}
+  .hero h1 .em{font-style:italic;color:var(--oxblood)}
+  .hero .sub{font-family:var(--body);font-size:clamp(1.15rem,1.7vw,1.34rem);color:var(--ink-2);max-width:42ch;margin-top:.25em}
+  .hero .sub b{font-family:var(--display);color:var(--navy);font-weight:600}
+  .hero .heroline{font-family:var(--mono);font-size:.82rem;line-height:1.5;color:var(--oxblood);background:var(--paper-2);border-left:3px solid var(--oxblood);padding:10px 14px;margin:20px 0 0;max-width:54ch}
+  .cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px;align-items:center}
   .ctalink{font-family:var(--mono);font-size:.78rem;color:var(--ink-2);text-decoration:none;align-self:center}
   .ctalink b{color:var(--navy)}
-  .readbrief{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--mutemono);text-decoration:none}
-  .readbrief:hover{color:var(--oxblood)}
-  .bookassure{list-style:none;margin:18px 0 0;padding:0;max-width:60ch}
-  .bookassure li{position:relative;padding:8px 0 8px 30px;font-size:1.02rem;color:var(--ink-2);border-bottom:1px dotted var(--line)}
-  .bookassure li:last-child{border-bottom:none}
-  .bookassure li b{font-family:var(--display);color:var(--navy);font-weight:600}
-  .bookassure li::before{content:'✓';position:absolute;left:0;top:8px;color:var(--gold);font-family:var(--mono);font-weight:700}
-  .herofig{margin:26px 0 2px;display:flex;justify-content:center}
-  .radar{width:min(340px,78vw);height:auto}
-  .radar .sweep{transform-origin:100px 100px;animation:spin 5.5s linear infinite}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  .radar .blip{opacity:0;animation:blip 5.5s linear infinite}
-  .radar .blip.b2{animation-delay:1.4s}.radar .blip.b3{animation-delay:3s}.radar .blip.b4{animation-delay:4.3s}
-  @keyframes blip{0%,8%{opacity:0}10%{opacity:1}45%{opacity:.85}80%{opacity:0}}
-  .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;align-items:center}
-  .hero .fine{font-family:var(--mono);font-size:.74rem;line-height:1.7;color:var(--mutemono);margin-top:22px;max-width:62ch}
+  .heronote{font-family:var(--mono);font-size:.72rem;line-height:1.7;color:var(--mutemono);margin-top:20px;max-width:46ch}
+  .heronote b{color:var(--navy)}
+  .prov{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mutemono);margin-top:22px}
+  .prov .pd{width:5px;height:5px;border-radius:50%;background:var(--gold)}
 
-  /* clients lockup */
-  .clients{margin-top:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  /* ===== THE LIVE CAPTURE DROP (centerpiece) ===== */
+  .drop{position:relative;border:1.5px solid var(--navy);background:var(--card);box-shadow:10px 10px 0 rgba(13,31,49,.07);min-width:0}
+  .drop .scanline{position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(154,123,63,0) 0,rgba(154,123,63,.06) 50%,rgba(154,123,63,0) 100%);background-size:100% 14px;animation:scan 7s linear infinite;mix-blend-mode:multiply;opacity:.5}
+  @keyframes scan{to{background-position:0 280px}}
+  .drop .hdr{background:var(--navy);color:#e7dfcb;padding:11px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--gold)}
+  .drop .hdr .l{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase}
+  .drop .hdr .l b{color:#fff}
+  .drop .hdr .live{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
+  .drop .hdr .live .d{width:7px;height:7px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite}
+  .drop .meta{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .drop .meta .m{flex:1;min-width:33%;padding:9px 14px;border-right:1px solid var(--line)}
+  .drop .meta .m:last-child{border-right:none}
+  .drop .meta .k{font-family:var(--mono);font-size:.54rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mutemono);display:block;margin-bottom:2px}
+  .drop .meta .v{font-family:var(--display);font-size:.98rem;font-weight:600;color:var(--navy);line-height:1.1}
+  .drop .body{padding:16px 16px 4px}
+  .drop .sech{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:4px 0 10px;display:flex;align-items:center;gap:8px}
+  .drop .sech::after{content:'';flex:1;height:1px;background:var(--line)}
+
+  /* matched opportunities list */
+  .opps{list-style:none;margin:0 0 6px;padding:0}
+  .opps li{display:grid;grid-template-columns:1fr auto;gap:6px 10px;padding:9px 0;border-bottom:1px dotted var(--line);align-items:center}
+  .opps li:last-child{border-bottom:none}
+  .opps .ttl{font-family:var(--display);font-size:.92rem;font-weight:600;color:var(--navy);line-height:1.18}
+  .opps .sub{grid-column:1;font-family:var(--mono);font-size:.62rem;color:var(--mutemono);letter-spacing:.02em;margin-top:1px}
+  .opps .redact{display:inline-block;background:var(--navy);color:var(--navy);border-radius:2px;padding:0 .3em;user-select:none;letter-spacing:-.04em}
+  .verdict{grid-row:1/3;font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border:1.5px solid;white-space:nowrap;align-self:center}
+  .verdict.bid{color:var(--green);border-color:var(--green);background:rgba(22,163,74,.07)}
+  .verdict.no{color:var(--oxblood);border-color:var(--oxblood);background:rgba(110,31,35,.06)}
+  .verdict.watch{color:var(--gold);border-color:var(--gold);background:rgba(154,123,63,.07)}
+
+  /* lower grid: recompete dial + CA map */
+  .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);margin-top:10px}
+  .dgrid .cell{padding:14px 16px}
+  .dgrid .cell:first-child{border-right:1px solid var(--line)}
+  .dial{display:flex;align-items:center;gap:14px}
+  .dial svg{flex:none}
+  .dial .read .big{font-family:var(--display);font-size:1.7rem;font-weight:600;color:var(--oxblood);line-height:1}
+  .dial .read .big span{font-family:var(--mono);font-size:.7rem;color:var(--mutemono)}
+  .dial .read .cap{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mutemono);margin-top:5px;line-height:1.4}
+  .dial .read .cap b{color:var(--navy)}
+  .mapwrap{display:flex;align-items:center;gap:13px}
+  .mapwrap svg{flex:none}
+  .mapwrap .read .lab{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mutemono)}
+  .mapwrap .read .city{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.1;margin-top:2px}
+  .mapwrap .read .rl{font-family:var(--mono);font-size:.62rem;color:var(--mutemono);margin-top:6px;line-height:1.4}
+  .mapwrap .read .rl b{color:var(--oxblood)}
+  .drop .foot{background:var(--paper-2);border-top:1px solid var(--line);padding:9px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mutemono)}
+  .drop .foot .cls{color:var(--oxblood)}
+  .dropcap{font-family:var(--mono);font-size:.66rem;color:var(--mutemono);text-align:center;margin:12px 0 0;letter-spacing:.04em}
+  .dropcap b{color:var(--navy)}
+
+  /* ===== clients lockup — all same size ===== */
+  .clients{margin-top:46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
   .clients .lab{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono)}
-  .clients .marks{display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+  .clients .marks{display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+  .clients .mk{display:flex;align-items:center;justify-content:center;height:30px}
   .clients img.cl{height:30px;width:auto;filter:saturate(.2) contrast(1.05)}
-  .clients .marks .bhlogo{font-size:.72rem;padding:6px 12px}
-  .clients .marks .nellislogo{font-size:1.5rem}
   .bhlogo{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #d9d4c6;border-radius:5px;padding:6px 12px;font-family:'Arial Black','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:.82rem;color:#6d6f72;letter-spacing:.02em;line-height:1;white-space:nowrap}
   .bhlogo .dot{width:9px;height:9px;border-radius:50%;background:#2f5fb0;box-shadow:0 0 0 3.5px #aecbf2;flex:none;margin:0 3px}
   .bhlogo.lg{font-size:1.35rem;padding:13px 22px;gap:9px}
   .bhlogo.lg .dot{width:15px;height:15px;box-shadow:0 0 0 6px #aecbf2;margin:0 6px}
-  .bhlogo.sm{font-size:.6rem;padding:4px 9px;gap:4px}
-  .bhlogo.sm .dot{width:6px;height:6px;box-shadow:0 0 0 2.5px #aecbf2;margin:0 2px}
-  .nellislogo{font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;color:#16a34a;letter-spacing:-.01em;line-height:1;display:inline-block}
+  .nellislogo{font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;color:#16a34a;letter-spacing:-.01em;line-height:1;display:inline-block;font-size:1.55rem}
 
-  /* stat band */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--navy);margin-top:30px;background:var(--navy)}
-  .stats .s{padding:18px 14px;border-right:1px solid var(--navy-2);text-align:center;color:#dde6ef}
-  .stats .s:last-child{border-right:none}
-  .stats .n{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:#fff;line-height:1}
-  .stats .n .u{font-family:var(--mono);font-size:.9rem;color:var(--gold-2)}
-  .stats .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#9fb1c4;margin-top:7px;display:block}
+  /* ===== price anchor band ===== */
+  .anchor{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--navy);margin-top:0;background:var(--navy)}
+  .anchor .a{padding:22px 18px;border-right:1px solid var(--navy-2);text-align:center;color:#dde6ef}
+  .anchor .a:last-child{border-right:none}
+  .anchor .a.us{background:rgba(154,123,63,.16)}
+  .anchor .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#9fb1c4;display:block;margin-bottom:8px}
+  .anchor .a.us .k{color:var(--gold-2)}
+  .anchor .n{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.15rem);font-weight:600;color:#fff;line-height:1}
+  .anchor .n s{color:#6f8095;text-decoration-thickness:1.5px}
+  .anchor .sm{font-family:var(--mono);font-size:.66rem;color:#9fb1c4;margin-top:7px;display:block;line-height:1.5}
+  .anchor .a.us .n{color:var(--gold-2)}
 
-  /* situation readout */
+  /* ===== situation strip ===== */
   .situation{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--navy);margin-top:22px;background:var(--card)}
   .situation .cell{padding:14px 16px;border-right:1px solid var(--line)}
   .situation .cell:last-child{border-right:none}
   .situation .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);display:block;margin-bottom:5px}
   .situation .v{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.1}
 
-  section{padding:54px 0;border-top:1.5px solid var(--line-2)}
-  .lead{font-size:1.2rem;color:var(--ink-2);max-width:60ch}
-
-  /* testimonial */
-  .quote{border:1.5px solid var(--navy);background:var(--card);margin:30px 0;padding:0;overflow:hidden;box-shadow:6px 6px 0 rgba(13,31,49,.06)}
+  /* ===== testimonial ===== */
+  .quote{border:1.5px solid var(--navy);background:var(--card);margin:0;padding:0;overflow:hidden;box-shadow:6px 6px 0 rgba(13,31,49,.06)}
   .quote .bar{height:5px;background:linear-gradient(90deg,var(--gold),var(--oxblood))}
-  .quote .in{display:grid;grid-template-columns:118px 1fr;gap:24px;padding:26px 28px;align-items:center}
-  .quote .badge{display:flex;flex-direction:column;align-items:center;gap:10px;border-right:1px solid var(--line);padding-right:20px}
-  .quote .badge img{width:96px;height:auto;filter:saturate(.25) contrast(1.05)}
-  .quote .q{font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,1.9vw,1.4rem);color:var(--navy);line-height:1.3;margin:0 0 12px}
+  .quote .in{display:grid;grid-template-columns:130px 1fr;gap:26px;padding:28px 30px;align-items:center}
+  .quote .badge{display:flex;flex-direction:column;align-items:center;gap:11px;border-right:1px solid var(--line);padding-right:22px}
+  .quote .badge img{width:104px;height:auto;filter:saturate(.25) contrast(1.05)}
+  .quote .q{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,2vw,1.5rem);color:var(--navy);line-height:1.3;margin:0 0 12px}
   .quote .q::before{content:'\201C';color:var(--gold);font-size:1.4em;line-height:0;vertical-align:-.3em;margin-right:.04em}
   .quote .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--oxblood)}
   .quote .who b{color:var(--navy)}
-  .quote .stars{color:var(--gold);font-size:.8rem;letter-spacing:2px}
+  .quote .stars{color:var(--gold);font-size:.82rem;letter-spacing:2px}
 
-  /* pull quote inline */
-  .pull{border-left:3px solid var(--gold);padding:6px 0 6px 18px;margin:24px 0;font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--navy)}
-  .pull cite{display:block;font-family:var(--mono);font-style:normal;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mutemono);margin-top:7px}
-
-  /* problem -> solution */
+  /* ===== problem -> solution ===== */
   .ps{margin-top:26px;border-top:1px solid var(--line)}
   .ps-row{display:grid;grid-template-columns:30px 1fr 1.1fr;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);transition:.16s}
   .ps-row:hover{background:var(--paper-2)}
@@ -165,12 +190,12 @@
   .ps-sol{font-size:.96rem;color:var(--ink-2)}
   .ps-sol b{font-family:var(--display);color:var(--navy);font-weight:600;font-size:1rem;display:block;margin-bottom:2px}
 
-  /* schedule */
-  .schedule{border:1.5px solid var(--navy);background:var(--card);margin-top:24px}
-  .schedule .hd{background:var(--navy);color:#ece3cf;padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;border-bottom:2px solid var(--gold)}
-  .schedule .hd .t{font-family:var(--display);font-size:1.3rem;color:#fff;font-weight:600}
+  /* ===== offer / schedule ===== */
+  .schedule{border:1.5px solid var(--navy);background:var(--card);margin-top:24px;box-shadow:8px 8px 0 rgba(13,31,49,.06)}
+  .schedule .hd{background:var(--navy);color:#ece3cf;padding:17px 26px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;border-bottom:2px solid var(--gold)}
+  .schedule .hd .t{font-family:var(--display);font-size:1.32rem;color:#fff;font-weight:600}
   .schedule .hd .s{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
-  .grp{padding:18px 24px 4px}.grp+.grp{border-top:1px solid var(--line)}
+  .grp{padding:18px 26px 4px}.grp+.grp{border-top:1px solid var(--line)}
   .grp-h{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
   ul.ck{list-style:none;margin:0 0 12px;padding:0}
   ul.ck li{display:flex;gap:13px;padding:10px 0;border-bottom:1px dotted var(--line);align-items:flex-start}
@@ -179,67 +204,69 @@
   ul.ck .txt{flex:1}ul.ck .txt b{font-family:var(--display);color:var(--navy);font-weight:600}
   ul.ck .txt .d{color:var(--ink-2);font-size:.93rem}
   ul.ck .val{flex:none;font-family:var(--mono);font-size:.72rem;color:var(--gold);white-space:nowrap;padding-left:8px;padding-top:2px}
-  .sfoot{background:var(--paper-2);padding:16px 24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .sfoot{background:var(--paper-2);padding:18px 26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
   .sfoot .av{font-family:var(--mono);font-size:.78rem;color:var(--ink-2)}.sfoot .av b{color:var(--navy)}
   .sfoot .pr{font-family:var(--display);font-size:1.3rem;color:var(--navy);font-weight:600}.sfoot .pr b{color:var(--oxblood)}
 
-  /* process */
-  .proc{counter-reset:p;margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line-2)}
-  .proc .step{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
-  .proc .step:nth-child(2n){border-right:none}
-  .proc .step::before{counter-increment:p;content:'0' counter(p);font-family:var(--mono);font-size:.9rem;color:var(--gold);font-weight:600;padding-top:2px}
-  .proc .step h3{margin-bottom:2px;font-size:1.05rem}
-  .proc .step p{margin:0;font-size:.92rem;color:var(--ink-2)}
-  .posture{margin-top:22px;border:1.5px solid var(--navy);background:var(--navy);color:#dde6ef}
-  .posture .ph{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);padding:12px 20px;border-bottom:1px solid var(--navy-2)}
-  .posture .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-  .posture .row div{padding:15px 20px;border-right:1px solid var(--navy-2);border-top:1px solid var(--navy-2)}
-  .posture .row b{font-family:var(--mono);color:var(--gold-2);display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
-  .posture .row span{font-size:.9rem;color:#cdd8e3}
-
-  .vs{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:22px;border:1.5px solid var(--navy)}
-  .vs th,.vs td{padding:11px 12px;text-align:center;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
-  .vs th:last-child,.vs td:last-child{border-right:none}
-  .vs td:first-child,.vs th:first-child{text-align:left;font-family:var(--body)}
-  .vs thead th{background:var(--paper-2);font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
-  .vs thead th.us{background:var(--navy);color:#fff}
-  .vs td.us{background:rgba(154,123,63,.09);font-weight:600;color:var(--navy)}
-  .vs .muted{font-size:.82em}.vs tr:last-child td{border-bottom:none}
-  .vs .tot td{font-family:var(--display);font-weight:600;background:var(--paper-2)}.vs .tot td.us{background:rgba(110,31,35,.1);color:var(--oxblood)}
-
+  /* ===== guarantee + price ===== */
   .gp{display:grid;grid-template-columns:1.25fr .85fr;gap:24px;margin-top:24px;align-items:stretch}
   .guar{border:1.5px solid var(--gold);background:var(--card);padding:26px 28px}
   .guar .q{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem);color:var(--navy);font-style:italic;max-width:44ch}
-  .pricec{background:var(--navy);color:#e7dfcb;padding:26px;text-align:center;border-top:3px solid var(--gold)}
+  .pricec{background:var(--navy);color:#e7dfcb;padding:26px;text-align:center;border-top:3px solid var(--gold);display:flex;flex-direction:column;justify-content:center}
   .pricec .nm{font-family:var(--display);font-size:1.3rem;color:#fff;margin-top:6px}
   .pricec .pr{font-family:var(--display);font-size:2.7rem;color:#fff;font-weight:600;margin:8px 0 0}
   .pricec .pr span{font-family:var(--mono);font-size:.8rem;color:#c5bca6}
-  .pricec .lock{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-2);border:1px solid rgba(187,156,94,.45);padding:5px 11px}
+  .pricec .lock{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-2);border:1px solid rgba(187,156,94,.45);padding:5px 11px}
 
-  .calwrap{border:1.5px solid var(--navy);background:var(--card);margin-top:22px;overflow:hidden}
+  /* ===== book ===== */
+  .bookassure{list-style:none;margin:18px 0 0;padding:0;max-width:60ch}
+  .bookassure li{position:relative;padding:9px 0 9px 30px;font-size:1.02rem;color:var(--ink-2);border-bottom:1px dotted var(--line)}
+  .bookassure li:last-child{border-bottom:none}
+  .bookassure li b{font-family:var(--display);color:var(--navy);font-weight:600}
+  .bookassure li::before{content:'✓';position:absolute;left:0;top:9px;color:var(--gold);font-family:var(--mono);font-weight:700}
+  .calwrap{border:1.5px solid var(--navy);background:var(--card);margin-top:24px;overflow:hidden;box-shadow:8px 8px 0 rgba(13,31,49,.06)}
   .calfb{padding:28px;text-align:center;color:var(--mutemono);font-family:var(--mono);font-size:.82rem}
-  .stamp{display:inline-block;border:2px solid var(--oxblood);color:var(--oxblood);font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 13px;transform:rotate(-4deg);opacity:.85;font-weight:600}
 
-  footer{background:var(--navy);color:#90a3b6;font-family:var(--mono);font-size:.74rem;line-height:1.7;padding:34px 0;margin-top:10px}
+  /* ===== sticky CTA ===== */
+  .stick{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(13,31,49,.97);backdrop-filter:blur(6px);border-top:2px solid var(--gold);transform:translateY(120%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .stick.on{transform:none}
+  .stick .in{max-width:var(--maxw);margin:0 auto;padding:11px 30px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .stick .t{color:#e7dfcb;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;line-height:1.4}
+  .stick .t b{color:#fff;font-family:var(--display);font-size:.96rem;letter-spacing:0}
+  .stick .t .sm{color:var(--gold-2);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}
+  .stick a.btn{border-color:var(--gold);background:var(--gold);color:#15110a;white-space:nowrap}
+  .stick a.btn:hover{background:var(--gold-2);border-color:var(--gold-2);box-shadow:none;transform:translateY(-1px)}
+  @media(max-width:600px){.stick .t .sm{display:none}.stick .in{padding:9px 16px}.stick a.btn{padding:13px 18px;font-size:.74rem}}
+
+  footer{background:var(--navy);color:#90a3b6;font-family:var(--mono);font-size:.74rem;line-height:1.7;padding:36px 0 90px}
   footer .in{max-width:var(--maxw);margin:0 auto;padding:0 30px}
-  footer .cl{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin:14px 0 4px}
-  footer .cl img{height:34px;filter:brightness(0) invert(1) opacity(.7)}
-  footer .far{border-top:1px solid var(--navy-2);margin-top:16px;padding-top:16px;color:#74879b;max-width:84ch}
+  footer .cl{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:14px 0 4px}
+  footer .cl img{height:30px;filter:brightness(0) invert(1) opacity(.7)}
+  footer .cl .bhlogo{font-size:.72rem;padding:5px 10px}
+  footer .cl .nellislogo{font-size:1.1rem}
+  footer .far{border-top:1px solid var(--navy-2);margin-top:16px;padding-top:16px;color:#74879b;max-width:88ch}
 
-  @media(max-width:880px){
-    .doc{grid-template-columns:1fr;gap:0}.rail{position:static;padding-top:30px;order:-1}.railseal,.railclients{display:none}
-    .content{padding-top:26px;max-width:100%}.gp{grid-template-columns:1fr}.proc{grid-template-columns:1fr}.proc .step{border-right:none}
+  @media(max-width:980px){
+    .hero{grid-template-columns:1fr;gap:34px}
+    .hero .dropcol{order:2}
   }
-  @media(max-width:600px){
-    body{font-size:17px}.ps-row{grid-template-columns:24px 1fr;gap:10px}.ps-sol{grid-column:1/-1;padding-left:34px}
-    .situation,.stats{grid-template-columns:1fr 1fr}.quote .in{grid-template-columns:1fr}.quote .badge{border-right:none;border-bottom:1px solid var(--line);padding:0 0 14px;flex-direction:row}
-    .vs{font-size:.78rem}.vs th,.vs td{padding:8px 6px}
+  @media(max-width:880px){
+    .gp{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    body{font-size:17px}
+    .anchor{grid-template-columns:1fr}.anchor .a{border-right:none;border-bottom:1px solid var(--navy-2)}.anchor .a:last-child{border-bottom:none}
+    .situation{grid-template-columns:1fr}
+    .ps-row{grid-template-columns:24px 1fr;gap:10px}.ps-sol{grid-column:1/-1;padding-left:34px}
+    .quote .in{grid-template-columns:1fr}.quote .badge{border-right:none;border-bottom:1px solid var(--line);padding:0 0 14px;flex-direction:row}
+    .dgrid{grid-template-columns:1fr}.dgrid .cell:first-child{border-right:none;border-bottom:1px solid var(--line)}
+    .drop .meta .m{min-width:50%}
   }
 </style>
 </head>
 <body>
 
-<div class="annc"><span class="o">★</span> &nbsp;<b>The Founding 13</b> · Independence Day Charter · Thirteen seats, one per niche · closing 04 Jul 2026 &nbsp;<span class="o">★</span></div>
+<div class="annc"><span class="o">★</span> &nbsp;<b>The Founding 13</b> · Independence Day Charter · Thirteen seats, one per niche · closing 04&nbsp;Jul&nbsp;2026 &nbsp;<span class="o">★</span></div>
 
 <div class="mast">
   <div class="in">
@@ -249,170 +276,206 @@
       </span>
       <span><span class="nm">Contract Fetch</span><br><span class="tg">Federal Capture Intelligence</span></span>
     </div>
-    <a class="btn btn-primary" href="#book">Reserve a Call</a>
+    <span class="live"><span class="d"></span>Drop building for <span style="color:var(--navy);font-weight:500" data-p="firm">your firm</span></span>
+    <a class="btn btn-primary" href="#book" data-p="cta">Get my free Capture Drop →</a>
   </div>
 </div>
 
-<div class="doc">
+<main>
 
-  <aside class="rail">
-    <div class="railseal" aria-hidden="true">
-      <svg width="74" height="74" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.5" fill="#0d1f31" stroke="#9a7b3f" stroke-width="1.2"/><circle cx="20" cy="20" r="14.2" fill="none" stroke="#9a7b3f" stroke-width=".5" opacity=".55"/><path d="M20 8.6l1.55 3.8 4.1.3-3.1 2.6.97 4L20 17.7l-3.5 1.6.97-4-3.1-2.6 4.1-.3z" fill="#bb9c5e"/><text x="20" y="30.3" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="8" fill="#ece3cf" font-weight="700">CF</text></svg>
-    </div>
-    <div class="filecard">
-      <div class="top"><span>Capture Brief</span><span style="display:flex;align-items:center;gap:6px"><span class="dot"></span>LIVE</span></div>
-      <div class="bd">
-        <span class="k">Prepared For</span>
-        <span class="v firm" data-p="firm">California Federal Contractors</span>
-        <span class="k">Re</span>
-        <span class="v" data-p="agencyline">Federal recompete exposure</span>
-        <span class="k">Date</span>
-        <span class="v">26 Jun 2026</span>
-        <div class="cls">Unclassified // For Planning Use</div>
-      </div>
-    </div>
-    <div class="railclients">
-      <div class="h">Working With</div>
-      <div class="row"><img src="img/starside.png" alt="" height="18" style="filter:saturate(.2)"> Starside Security</div>
-      <div class="row"><span class="bhlogo sm"><span>BASE</span><span class="dot"></span><span>HILL</span></span></div>
-    </div>
-  </aside>
-
-  <main class="content">
-
-    <!-- HERO -->
-    <section class="hero" style="border-top:none">
-      <span class="lbl ox reveal">For small federal contractors · The Founding 13</span>
-      <h1 class="reveal">Are you missing out on the next big bid?</h1>
-      <p class="sub reveal d1">We hand you the recompetes worth defending, the bids you can actually win, and the first draft of the proposal — proven on your <em>own</em> contract numbers in 48 hours, before you pay a cent.</p>
-      <p class="antipitch reveal d1">We can't promise you'll win a contract — that's not how FAR works. We promise you'll never miss a winnable bid or recompete again.</p>
+  <!-- ============ HERO + LIVE DROP ============ -->
+  <section class="hero wrap">
+    <div class="copy">
+      <span class="lbl ox reveal">For <span data-p="niche">small federal contractors</span> · The Founding 13</span>
+      <h1 class="reveal">Are you missing out on the <span class="em">next big bid?</span></h1>
+      <p class="sub reveal d1">A live capture department — built on <b data-p="firm">your</b> real contract record. We hand you the recompetes worth defending, the bids you can win, and the first draft. <b>Free, in 48 hours, before you pay a cent.</b></p>
       <p class="heroline reveal" data-p="heroline" style="display:none"></p>
 
-      <div class="herofig reveal d1" aria-hidden="true">
-        <svg class="radar" viewBox="0 0 200 200">
-          <defs><radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#16314a"/><stop offset="100%" stop-color="#0d1f31"/></radialGradient>
-            <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9a7b3f" stop-opacity="0"/><stop offset="100%" stop-color="#bb9c5e" stop-opacity=".55"/></linearGradient></defs>
-          <circle cx="100" cy="100" r="92" fill="url(#rg)" stroke="#9a7b3f" stroke-width="1.5"/>
-          <circle cx="100" cy="100" r="66" fill="none" stroke="#2b4865" stroke-width="1"/>
-          <circle cx="100" cy="100" r="40" fill="none" stroke="#2b4865" stroke-width="1"/>
-          <circle cx="100" cy="100" r="14" fill="none" stroke="#2b4865" stroke-width="1"/>
-          <line x1="8" y1="100" x2="192" y2="100" stroke="#2b4865" stroke-width=".8"/>
-          <line x1="100" y1="8" x2="100" y2="192" stroke="#2b4865" stroke-width=".8"/>
-          <g class="sweep"><path d="M100 100 L100 12 A88 88 0 0 1 178 70 Z" fill="url(#sw)"/></g>
-          <g fill="#bb9c5e"><circle class="blip" cx="142" cy="72" r="3.4"/><circle class="blip b2" cx="70" cy="132" r="3"/><circle class="blip b3" cx="128" cy="140" r="3.2"/><circle class="blip b4" cx="64" cy="74" r="2.8"/></g>
-          <circle cx="100" cy="100" r="3.6" fill="#e7dfcb"/>
-          <text x="100" y="186" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="2" fill="#9fb1c4">SCANNING YOUR LANE</text>
-        </svg>
-      </div>
-
-      <div class="situation reveal" id="situation" style="display:none">
-        <div class="cell"><span class="k">Annual Run-Rate</span><span class="v" data-p="runrate">—</span></div>
-        <div class="cell"><span class="k">Top Agency</span><span class="v" data-p="agency">—</span></div>
-        <div class="cell"><span class="k">Nearest Recompete</span><span class="v" data-p="recompete">—</span></div>
-      </div>
-
       <div class="cta reveal d2">
-        <a class="btn btn-primary" href="#book" data-p="cta">Get my free Capture Drop →</a>
+        <a class="btn btn-primary btn-lg" href="#book" data-p="cta">Get my free Capture Drop →</a>
         <a class="ctalink" href="tel:+12025034503">or call <b>(202)&nbsp;503-4503</b></a>
       </div>
-      <a class="readbrief reveal d2" href="#offer">↓ read the full brief first</a>
+      <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. You verify the Drop before paying anything.</p>
+      <span class="prov reveal d2"><span class="pd"></span>Sourced from SAM.gov · USAspending · FPDS</span>
+    </div>
 
-      <div class="clients reveal d2">
-        <span class="lab">Working with</span>
-        <div class="marks">
-          <img class="cl" src="img/starside.png" alt="Starside Security">
-          <span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span>
-          <span class="nellislogo">nellis</span>
+    <!-- THE LIVE CAPTURE DROP -->
+    <div class="dropcol reveal d1">
+      <div class="drop" aria-label="Sample Capture Drop, redacted">
+        <div class="scanline" aria-hidden="true"></div>
+        <div class="hdr">
+          <span class="l"><b>CAPTURE DROP</b> — Sample</span>
+          <span class="live"><span class="d"></span>Live</span>
+        </div>
+        <div class="meta">
+          <div class="m"><span class="k">Prepared for</span><span class="v" data-p="firm">Your Firm, Inc.</span></div>
+          <div class="m"><span class="k">Primary NAICS</span><span class="v" data-p="naics">561210</span></div>
+          <div class="m"><span class="k">Top agency</span><span class="v" data-p="agency">Dept. of Defense</span></div>
+        </div>
+
+        <div class="body">
+          <div class="sech">Matched opportunities · this week</div>
+          <ul class="opps">
+            <li>
+              <span class="verdict bid" data-p="verdict">BID</span>
+              <span class="ttl"><span data-p="agency">DoD</span> — Facilities Support Recompete</span>
+              <span class="sub">SAM · <span class="redact">SPE8EC&#8209;24&#8209;R&#8209;0091</span> · NAICS <span data-p="naics">561210</span> · set-aside SB</span>
+            </li>
+            <li>
+              <span class="verdict watch">WATCH</span>
+              <span class="ttl">Regional IDIQ — <span data-p="niche">your lane</span></span>
+              <span class="sub">FPDS · <span class="redact">W912&#8209;25&#8209;D&#8209;██</span> · incumbent <span data-p="rival">incumbent</span></span>
+            </li>
+            <li>
+              <span class="verdict no">NO-BID</span>
+              <span class="ttl">Open RFP — wrong size standard</span>
+              <span class="sub">SAM · <span class="redact">36C&#8209;25&#8209;Q&#8209;████</span> · gate fail: NAICS mismatch</span>
+            </li>
+          </ul>
+
+          <div class="dgrid">
+            <div class="cell">
+              <div class="sech">Recompete clock</div>
+              <div class="dial">
+                <svg width="78" height="78" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="34" fill="none" stroke="#e3dcc9" stroke-width="7"/>
+                  <circle id="dialArc" cx="40" cy="40" r="34" fill="none" stroke="#6e1f23" stroke-width="7" stroke-linecap="round"
+                          stroke-dasharray="213.6" stroke-dashoffset="74" transform="rotate(-90 40 40)"/>
+                  <text x="40" y="37" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="700" fill="#0d1f31" data-p="recompetedays">90</text>
+                  <text x="40" y="50" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="6.5" letter-spacing="1" fill="#736a57">DAYS</text>
+                </svg>
+                <div class="read">
+                  <div class="big" data-p="recompete">90 days</div>
+                  <div class="cap">to your nearest<br>recompete<br><b data-p="contract">contract on file</b></div>
+                </div>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="sech">Home lane</div>
+              <div class="mapwrap">
+                <!-- California silhouette (stylized) -->
+                <svg width="58" height="78" viewBox="0 0 100 134" aria-hidden="true">
+                  <path d="M14 6 L46 6 L46 18 L62 38 L70 52 L78 58 L84 70 L92 88 L92 100 L70 100 L62 112 L40 96 L34 78 L24 64 L18 50 L12 34 L10 18 Z"
+                        fill="#16314a" stroke="#9a7b3f" stroke-width="1.6"/>
+                  <circle id="mapPin" cx="34" cy="74" r="5.5" fill="#6e1f23" stroke="#f4f1e8" stroke-width="1.6"/>
+                  <circle cx="34" cy="74" r="11" fill="none" stroke="#bb9c5e" stroke-width="1" opacity=".7"/>
+                </svg>
+                <div class="read">
+                  <div class="lab">Based in</div>
+                  <div class="city"><span data-p="city">Your City</span>, <span data-p="state">CA</span></div>
+                  <div class="rl">#1 rival to beat:<br><b data-p="rival">the incumbent</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot">
+          <span>SAM · USAspending · FPDS</span>
+          <span class="cls">Unclassified // Planning Use</span>
         </div>
       </div>
+      <p class="dropcap">This is a <b>sample</b>. Your live Drop runs on <b data-p="firm">your</b> real awards — built in 48 hours, free.</p>
+    </div>
+  </section>
 
-      <div class="stats reveal">
-        <div class="s"><div class="n"><span data-count="48">48</span><span class="u">h</span></div><span class="k">To Your Roadmap</span></div>
-        <div class="s"><div class="n"><span data-count="13">13</span></div><span class="k">Founding Seats</span></div>
-        <div class="s"><div class="n"><span class="u">$</span><span data-count="50">50</span><span class="u">K+</span></div><span class="k">Engine Value / Yr</span></div>
-        <div class="s"><div class="n"><span class="u">1</span></div><span class="k">Firm Per Niche</span></div>
+  <!-- ============ PRICE ANCHOR ============ -->
+  <section class="wrap" style="padding-top:42px">
+    <div class="situation reveal" id="situation" style="display:none;margin-top:0;margin-bottom:30px">
+      <div class="cell"><span class="k">Annual run-rate</span><span class="v" data-p="runrate">—</span></div>
+      <div class="cell"><span class="k">Top agency</span><span class="v" data-p="agency">—</span></div>
+      <div class="cell"><span class="k">Nearest recompete</span><span class="v" data-p="recompete">—</span></div>
+    </div>
+    <span class="secnum reveal">§ 01 — The Math</span>
+    <h2 class="reveal">One proposal costs more than a year of this.</h2>
+    <div class="anchor reveal">
+      <div class="a"><span class="k">Consultant per proposal</span><div class="n"><s>$5K–$20K</s></div><span class="sm">+ 40 hours of your week,<br>per bid, every time</span></div>
+      <div class="a"><span class="k">In-house capture hire</span><div class="n"><s>$150K</s>/yr</div><span class="sm">recruit, manage,<br>and hope they stay</span></div>
+      <div class="a us"><span class="k">Contract Fetch</span><div class="n">~$250<span style="font-size:.5em;color:#9fb1c4">/wk</span></div><span class="sm">whole department,<br>always on</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS ============ -->
+  <section class="wrap" style="padding:0">
+    <div class="clients reveal">
+      <span class="lab">Working with</span>
+      <div class="marks">
+        <span class="mk"><img class="cl" src="img/starside.png" alt="Starside Security"></span>
+        <span class="mk"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span></span>
+        <span class="mk"><span class="nellislogo">nellis</span></span>
       </div>
+    </div>
+  </section>
 
-      <p class="fine reveal">Every engagement opens with a free <b>Capture Drop</b> — a roadmap on your real contract history, in 48 hours. You verify it before paying anything. No fee is ever tied to whether you win (FAR 52.203-5).</p>
-    </section>
-
-    <!-- TESTIMONIAL: STARSIDE -->
-    <div class="quote reveal" style="margin-top:0">
+  <!-- ============ TESTIMONIAL: STARSIDE ============ -->
+  <section class="wrap" style="border-top:none;padding-top:54px">
+    <div class="quote reveal">
       <div class="bar"></div>
       <div class="in">
         <div class="badge"><img src="img/starside.png" alt="Starside Security"><span class="stars">★★★★★</span></div>
         <div>
-          <p class="q">Robert caught a recompete on our GSA schedule we were about to miss and had the first draft on my desk before I'd finished my coffee. It's a capture department for a fraction of one hire.</p>
+          <p class="q">Robert caught a recompete on our GSA schedule we were about to miss and had the first draft on my desk before I'd finished my coffee. A capture department for a fraction of one hire.</p>
           <p class="who">— <b>Chief Operating Officer</b>, Starside Security · GSA Schedule Holder</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- §01 SITUATION -->
-    <section>
-      <span class="secnum">§ 01 — The Situation</span>
-      <h2>The bid you could have won closed before you saw it.</h2>
-      <p class="lead reveal">You're too busy delivering to chase the next contract, can't justify a $150K capture manager, and the recompete that keeps your lights on is a date on a calendar you don't have time to watch. You already win — it's a question of <em>reach</em>, not merit.</p>
-    </section>
+  <!-- ============ PROBLEM -> SOLUTION ============ -->
+  <section class="wrap" id="solution">
+    <span class="secnum reveal">§ 02 — Findings → Action</span>
+    <h2 class="reveal">The bid you could have won<br>closed before you saw it.</h2>
+    <div class="ps">
+      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg></span><div class="ps-prob">I don't know which bids I can actually win.</div><div class="ps-sol"><b>Bid / No-Bid gate</b>Every opportunity run through your real gate — NAICS, size, certs, vehicle. You chase only what fits.</div></div>
+      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ps-prob">My biggest contract recompetes and I miss the window.</div><div class="ps-sol"><b>Recompete clock</b>Every end-date tracked. A winnable recompete never blindsides you again.</div></div>
+      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18M6 12h12M9 19h6"/></svg></span><div class="ps-prob">I'm drowning in 200 opportunity emails a week.</div><div class="ps-sol"><b>Normalized feed</b>Your whole market filtered to the handful of bids that fit — weekly, not an inbox to triage.</div></div>
+      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/></svg></span><div class="ps-prob">Proposals take forever and start from a blank page.</div><div class="ps-sol"><b>Submission-ready drafts</b>When a bid clears the gate, your first draft is written. You review and submit — never start from zero.</div></div>
+    </div>
+  </section>
 
-    <!-- §02 PROBLEM -> SOLUTION -->
-    <section id="solution">
-      <span class="secnum">§ 02 — Findings → Action</span>
-      <h2>Your problem → our solution.</h2>
-      <div class="ps">
-        <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg></span><div class="ps-prob">I don't know which bids I can actually win.</div><div class="ps-sol"><b>Bid / No-Bid Gate</b>Every opportunity run through your real gate — NAICS, size, certs, vehicle, deadline. You chase only what fits.</div></div>
-        <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ps-prob">My biggest contract recompetes and I miss the window.</div><div class="ps-sol"><b>Recompete Clock</b>Every contract end-date tracked. A winnable recompete never blindsides you again.</div></div>
-        <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18M6 12h12M9 19h6"/></svg></span><div class="ps-prob">I'm drowning in 200 opportunity emails a week.</div><div class="ps-sol"><b>Normalized Feed</b>Your whole market filtered to the handful of bids that fit — weekly, not an inbox to triage.</div></div>
-        <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V8l8-4 8 4v12M9 20v-6h6v6"/></svg></span><div class="ps-prob">I can't justify a $150K capture manager.</div><div class="ps-sol"><b>The whole department for ~8% of that</b>A capture team's output — research, qualification, drafting, monitoring — for a fraction of one salary.</div></div>
-        <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/></svg></span><div class="ps-prob">Proposals take forever and start from a blank page.</div><div class="ps-sol"><b>Submission-Ready Drafts</b>When a bid clears the gate, your first draft is written. You review and submit — never start from zero.</div></div>
-        <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span><div class="ps-prob">If my SAM or a cert lapses, I'm locked out.</div><div class="ps-sol"><b>SAM Lifeline + Recert Calendar</b>Live registration status and every cert tripwire on one calendar, with alerts well before expiry.</div></div>
+  <!-- ============ OFFER ============ -->
+  <section class="wrap" id="offer">
+    <span class="secnum reveal">§ 03 — The Complete Offer</span>
+    <h2 class="reveal">Everything your seat includes.</h2>
+    <p class="lead reveal" style="font-style:italic;color:var(--navy)">Thirteen founding seats — one firm per niche — closing on the Fourth. Capped at thirteen because every seat gets hands-on research from the founder.</p>
+    <div class="schedule reveal">
+      <div class="hd"><span class="t">Schedule A — What You Get</span><span class="s">Founding 13 · Independence Day Charter</span></div>
+      <div class="grp">
+        <div class="grp-h">I. The Engine — always on</div>
+        <ul class="ck">
+          <li><span class="tick">✓</span><span class="txt"><b>Normalized opportunity feed.</b> <span class="d">Your market filtered to the few bids that fit — weekly.</span></span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Recompete clock & portfolio risk dashboard.</b> <span class="d">Every contract end-date tracked.</span></span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Bid / No-Bid gate & scorecard.</b> <span class="d">Every opportunity run through your bid-ability gate.</span></span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Incumbent & competitor dossier.</b> <span class="d">Who's winning your lane — and where they're exposed.</span></span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>SAM lifeline + multi-cert recert calendar.</b> <span class="d">8(a), SDVOSB, WOSB, HUBZone — every tripwire, one calendar.</span></span></li>
+        </ul>
       </div>
-    </section>
-
-    <!-- §03 SCHEDULE A -->
-    <section id="offer">
-      <span class="secnum">§ 03 — The Complete Offer</span>
-      <h2>Everything your enrollment includes.</h2>
-      <p class="lead reveal" style="font-style:italic;color:var(--navy)">In 1776, thirteen colonies stopped asking permission. We're opening thirteen founding seats — one firm per niche — and closing them on the Fourth. Capped at thirteen because every seat gets hands-on capture research from the founder; we won't dilute delivery.</p>
-      <div class="schedule reveal">
-        <div class="hd"><span class="t">Schedule A — What You Get</span><span class="s">Founding 13 · Independence Day Charter</span></div>
-        <div class="grp">
-          <div class="grp-h">I. The Engine — always on, every cycle</div>
-          <ul class="ck">
-            <li><span class="tick">✓</span><span class="txt"><b>Normalized Opportunity Feed.</b> <span class="d">Your market filtered to the few bids that fit — weekly.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Recompete Clock & Portfolio Risk Dashboard.</b> <span class="d">Every contract end-date tracked.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Bid / No-Bid Gate & Scorecard.</b> <span class="d">Every opportunity run through your bid-ability gate.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Incumbent & Competitor Dossier.</b> <span class="d">Who's winning your lane, and where they're exposed.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>SAM Lifeline + Multi-Cert Recert Calendar.</b> <span class="d">8(a), SDVOSB, WOSB, HUBZone — every tripwire, one calendar.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Monthly Capture Intelligence Briefing.</b> <span class="d">The whole picture — and the single most important next action.</span></span></li>
-          </ul>
-        </div>
-        <div class="grp">
-          <div class="grp-h">II. Charter Bonuses — Founding 13 only, free up front</div>
-          <ul class="ck">
-            <li><span class="tick">✓</span><span class="txt"><b>The Capture Drop.</b> <span class="d">Your custom roadmap, on your real contracts, in 48 hours.</span></span><span class="val">$2,500</span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Founding rate, locked for life.</b> <span class="d">$1,000 / 4 weeks before it rises to $1,500 at close.</span></span><span class="val">$6,000+/yr</span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Full dossier on your #1 rival.</b> <span class="d">The incumbent you most need to beat.</span></span><span class="val">$750</span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Bid/No-Bid on your top 3 live opps.</b> <span class="d">Real verdicts on the pursuits in front of you now.</span></span><span class="val">$1,500</span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Niche exclusivity.</b> <span class="d">We never arm your competitor — structurally true under FAR 9.5.</span></span><span class="val">priceless</span></li>
-          </ul>
-        </div>
-        <div class="grp">
-          <div class="grp-h">III. The Guarantee & Terms</div>
-          <ul class="ck">
-            <li><span class="tick">✓</span><span class="txt"><b>The Radar Guarantee.</b> <span class="d">Every month your whole lane gets worked to the floor — a shallow month is free.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Month to month.</b> <span class="d">Cancel anytime. No annual lock-in.</span></span></li>
-            <li><span class="tick">✓</span><span class="txt"><b>Thirteen seats. The charter closes 04 Jul 2026.</b> <span class="d">One firm per niche; onboarding the week after the Fourth.</span></span></li>
-          </ul>
-        </div>
-        <div class="sfoot">
-          <span class="av">Engine value <b>$50,000+/yr</b> · Up-front bonuses <b>~$5,000</b></span>
-          <span class="pr">Founding: <b>$1,000</b> <span style="font-family:var(--mono);font-size:.7rem;color:var(--mutemono)">/ 4 weeks</span></span>
-        </div>
+      <div class="grp">
+        <div class="grp-h">II. Charter bonuses — Founding 13 only, free up front</div>
+        <ul class="ck">
+          <li><span class="tick">✓</span><span class="txt"><b>The Capture Drop.</b> <span class="d">Your custom roadmap, on your real contracts, in 48 hours.</span></span><span class="val">$2,500</span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Founding rate, locked for life.</b> <span class="d">$1,000 / 4 weeks before it rises to $1,500 at close.</span></span><span class="val">$6,000+/yr</span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Full dossier on your #1 rival.</b> <span class="d">The incumbent you most need to beat — <span data-p="rival">named in your Drop</span>.</span></span><span class="val">$750</span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Niche exclusivity.</b> <span class="d">We never arm your competitor — structurally true under FAR 9.5.</span></span><span class="val">priceless</span></li>
+        </ul>
       </div>
-    </section>
+      <div class="grp">
+        <div class="grp-h">III. The guarantee & terms</div>
+        <ul class="ck">
+          <li><span class="tick">✓</span><span class="txt"><b>The Radar Guarantee.</b> <span class="d">Every month your whole lane gets worked to the floor — a shallow month is free.</span></span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Month to month.</b> <span class="d">Cancel anytime. No annual lock-in.</span></span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Thirteen seats. Closes 04 Jul 2026.</b> <span class="d">One firm per niche; onboarding the week after the Fourth.</span></span></li>
+        </ul>
+      </div>
+      <div class="sfoot">
+        <span class="av">Engine value <b>$50,000+/yr</b> · Up-front bonuses <b>~$5,000</b> · <b>free</b> until you verify</span>
+        <a class="btn btn-primary" href="#book" data-p="cta">Get my free Capture Drop →</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- TESTIMONIAL: BASE HILL -->
+  <!-- ============ TESTIMONIAL: BASE HILL ============ -->
+  <section class="wrap" style="border-top:none;padding-top:0">
     <div class="quote reveal">
       <div class="bar"></div>
       <div class="in">
@@ -423,97 +486,64 @@
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- §04 HOW WE WORK -->
-    <section>
-      <span class="secnum">§ 04 — How We Work</span>
-      <h2>Exactly how the service runs.</h2>
-      <div class="proc reveal">
-        <div class="step"><div><h3>We map your position</h3><p>Your full federal record from authoritative gov sources — every award, agency, NAICS, end-date.</p></div></div>
-        <div class="step"><div><h3>We build your Capture Drop</h3><p>In 48 hours: recompetes to defend, live bids you can win, the start of your first proposal. You verify before you pay.</p></div></div>
-        <div class="step"><div><h3>The engine runs continuously</h3><p>Daily monitors: new solicitations matched to your gate, recompete clocks, competitor awards, SAM/cert expirations.</p></div></div>
-        <div class="step"><div><h3>A person reviews first</h3><p>Every briefing passes an analyst's eyes. You get judgment, explained — never a raw data dump.</p></div></div>
-        <div class="step"><div><h3>You get the one action</h3><p>Once a cycle: forecast, recompete countdown, competitor moves, and the single thing to do next.</p></div></div>
-        <div class="step"><div><h3>When a bid clears, we draft it</h3><p>You review and submit. Never a blank page, never a deadline you didn't see coming.</p></div></div>
+  <!-- ============ GUARANTEE ============ -->
+  <section class="wrap">
+    <span class="secnum reveal">§ 04 — The Guarantee</span>
+    <h2 class="reveal">We'll tell you when <em>not</em> to bid.</h2>
+    <p class="lead reveal" style="margin-bottom:18px">Every other capture shop's fee depends on you bidding — so they call everything a "must-bid." Ours doesn't. That candor is the product.</p>
+    <div class="gp reveal">
+      <div class="guar">
+        <span class="lbl">★ The Radar Guarantee</span>
+        <p class="q" style="margin-top:12px">"Every month we work your entire federal lane to the floor — every solicitation gated, every recompete clocked, every competitor profiled. If a month's brief ever comes back shallow, that month is free."</p>
+        <p class="muted" style="margin-top:12px;max-width:54ch;font-size:.92rem">You never pay a fee tied to whether you win — the guarantee rests on the depth of <em>our</em> research (FAR 52.203-5 clean). We guarantee the work, not the weather.</p>
       </div>
-      <div class="posture reveal">
-        <div class="ph">Standing Posture</div>
-        <div class="row">
-          <div><b>Data</b><span>Authoritative gov sources only. Never a fabricated number.</span></div>
-          <div><b>Cadence</b><span>Daily monitoring · weekly feed · monthly briefing.</span></div>
-          <div><b>Conflicts — FAR 9.5</b><span>One firm per niche. Never both sides.</span></div>
-          <div><b>Fees — FAR 52.203-5</b><span>Process-based. Never contingent on an award.</span></div>
-        </div>
+      <div class="pricec">
+        <span class="lbl" style="color:var(--gold-2)">Founding 13 · one seat per niche</span>
+        <div class="nm">Founding Charter Seat</div>
+        <div class="pr">$1,000<span> / 4 wks</span></div>
+        <span class="lock">Locked for life · rises to $1,500 at close</span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- §05 COMPARISON -->
-    <section>
-      <span class="secnum">§ 05 — Why Not The Alternatives</span>
-      <h2>Every other path is slow, or it stays on you.</h2>
-      <table class="vs reveal">
-        <thead><tr><th>What drives value</th><th>Do nothing</th><th>DIY</th><th>$150K hire</th><th>$30K tool</th><th class="us">Contract Fetch</th></tr></thead>
-        <tbody>
-          <tr><td>Protects revenue & wins more</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td class="us">✓</td></tr>
-          <tr><td>Actually gets done</td><td>—</td><td>— <span class="muted">(you won't)</span></td><td>✓</td><td>— <span class="muted">(tool ≠ done)</span></td><td class="us">✓</td></tr>
-          <tr><td>Fast</td><td>—</td><td>— <span class="muted">(weekends)</span></td><td>— <span class="muted">(months)</span></td><td>— <span class="muted">(still you)</span></td><td class="us">✓ (48h)</td></tr>
-          <tr><td>Near-zero effort for you</td><td>✓</td><td>—</td><td>— <span class="muted">(manage a hire)</span></td><td>— <span class="muted">(you run it)</span></td><td class="us">✓</td></tr>
-          <tr class="tot"><td>Overall</td><td>1/4</td><td>1/4</td><td>2/4</td><td>1/4</td><td class="us">4/4</td></tr>
-        </tbody>
-      </table>
-    </section>
+  <!-- ============ BOOK ============ -->
+  <section class="wrap" id="book">
+    <span class="secnum reveal">§ 05 — Claim One Of The Founding 13</span>
+    <h2 class="reveal">Book the 30-minute call.</h2>
+    <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We build your free Capture Drop from <span data-p="firm">your</span> real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
+    <ul class="bookassure reveal">
+      <li><b>30 minutes with Robert, the founder</b> — not a sales rep, no slide deck.</li>
+      <li><b>You leave with a free Capture Drop</b> built on your real federal record — yours to keep, subscribe or not.</li>
+      <li><b>No obligation.</b> If it's not a fit, you keep the roadmap and we part friends.</li>
+    </ul>
+    <div class="calwrap reveal">
+      <h3 data-p="bookhdr" style="text-align:center;padding:22px 20px 14px;margin:0;border-bottom:1px solid var(--line)">Your Free 30-Day Federal Capture Roadmap</h3>
+      <div class="calendly-inline-widget" id="cal-embed" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:320px;height:680px"></div>
+      <noscript><div class="calfb">Enable JavaScript to load the scheduler, or email <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a>.</div></noscript>
+    </div>
+    <p style="font-family:var(--mono);font-size:.78rem;margin-top:18px;color:var(--ink-2)">Prefer to write first? <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a> · <a href="tel:+12025034503">(202) 503-4503</a></p>
+  </section>
 
-    <!-- §06 GUARANTEE -->
-    <section>
-      <span class="secnum">§ 06 — Candor & The Guarantee</span>
-      <h2>We'll tell you when <em>not</em> to bid.</h2>
-      <p class="lead reveal" style="margin-bottom:18px">Every other capture shop's fee depends on you bidding — so they call everything a "must-bid." Ours doesn't, so we won't. That candor is the product.</p>
-      <div class="gp reveal">
-        <div class="guar">
-          <span class="lbl">★ The Radar Guarantee</span>
-          <p class="q" style="margin-top:12px">"Every month we work your entire federal lane to the floor — every solicitation gated, every recompete clocked, every competitor profiled. If a month's brief ever comes back shallow, that month is free."</p>
-          <p class="muted" style="margin-top:12px;max-width:54ch;font-size:.94rem">You never pay a fee tied to whether you win — the guarantee rests on the depth of <em>our</em> research (FAR 52.203-5 clean). We guarantee the work, not the weather.</p>
-        </div>
-        <div class="pricec">
-          <span class="lbl" style="color:var(--gold-2)">Founding 13 · one seat per niche</span>
-          <div class="nm">Founding Charter Seat</div>
-          <div class="pr">$1,000<span> / 4 wks</span></div>
-          <span class="lock">Locked for life · rises to $1,500 at close</span>
-          <div style="margin-top:16px"><span class="stamp">Seat Reserved On Call</span></div>
-        </div>
-      </div>
-      <p class="pull reveal" style="margin-top:30px">"A capture department for a fraction of one hire."<cite>Chief Operating Officer, Starside Security</cite></p>
-    </section>
-
-    <!-- §07 BOOK -->
-    <section id="book">
-      <span class="secnum">§ 07 — Claim One Of The Founding 13</span>
-      <h2>Book a 30-minute call before the Fourth.</h2>
-      <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We'll build your free Capture Drop from your real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
-      <ul class="bookassure reveal">
-        <li><b>30 minutes with Robert, the founder</b> — not a sales rep, no slide deck.</li>
-        <li><b>You leave with a free Capture Drop</b> built on your real federal record — yours to keep whether or not you ever subscribe.</li>
-        <li><b>No obligation.</b> If it's not a fit, you keep the roadmap and we part friends.</li>
-      </ul>
-      <div class="calwrap reveal">
-        <h3 data-p="bookhdr" style="text-align:center;padding:22px 20px 14px;margin:0;border-bottom:1px solid var(--line)">Your Free 30-Day Federal Capture Roadmap</h3>
-        <div class="calendly-inline-widget" id="cal-embed" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:320px;height:680px"></div>
-        <noscript><div class="calfb">Enable JavaScript to load the scheduler, or email <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a>.</div></noscript>
-      </div>
-      <p style="font-family:var(--mono);font-size:.78rem;margin-top:18px;color:var(--ink-2)">Prefer to write first? <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a> · <a href="tel:+12025034503">(202) 503-4503</a></p>
-    </section>
-
-  </main>
-</div>
+</main>
 
 <footer>
   <div class="in">
     <span style="font-family:var(--display);font-size:1.2rem;color:#ece3cf">Contract Fetch</span> &nbsp;·&nbsp; Federal Capture Intelligence &nbsp;·&nbsp; Est. MMXXVI
-    <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span></div>
+    <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span><span class="nellislogo">nellis</span></div>
     <p style="margin:14px 0 2px;color:#9fb1c4;line-height:1.8">400 Spectrum Center Drive, Suite 909 &middot; Irvine, CA 92618<br><a href="mailto:coventry@getcontractfetch.com" style="color:#bb9c5e;text-decoration:none">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503" style="color:#bb9c5e;text-decoration:none">(202) 503-4503</a></p>
-    <p class="far">Contract Fetch provides capture research and proposal support for small federal contractors. Fees are never contingent on whether you win an award (FAR 52.203-5). We work with one firm per solicitation to avoid organizational conflicts of interest (FAR 9.5). All contract and financial data is drawn from authoritative government sources. © 2026 Contract Fetch.</p>
+    <p class="far">Contract Fetch provides capture research and proposal support for small federal contractors. Fees are never contingent on whether you win an award (FAR 52.203-5). We work with one firm per solicitation to avoid organizational conflicts of interest (FAR 9.5). All contract and financial data is drawn from authoritative government sources (SAM.gov, USAspending, FPDS). © 2026 Contract Fetch.</p>
   </div>
 </footer>
+
+<!-- STICKY CTA -->
+<div class="stick" id="stick" aria-hidden="true">
+  <div class="in">
+    <div class="t"><span class="sm">Founding 13 · closes 04 Jul 2026</span><br><b>Free Capture Drop on <span data-p="firm">your</span> real awards — 48 h, before you pay.</b></div>
+    <a class="btn" href="#book" data-p="cta">Get my free Capture Drop →</a>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -522,31 +552,74 @@
   function setText(sel,val){ document.querySelectorAll(sel).forEach(function(e){ e.textContent=val; }); }
   function show(sel,on){ document.querySelectorAll(sel).forEach(function(e){ e.style.display = on?'':'none'; }); }
 
+  // ---- existing hooks (preserved) ----
   var firm=g('firm'), contact=g('contact'), agency=g('agency'), sub=g('subagency'),
       recompete=g('recompete'), runrate=g('runrate');
+  // ---- new hooks ----
+  var contract=g('contract'), rival=g('rival'), naics=g('naics'), niche=g('niche'),
+      city=g('city'), state=g('state'), matches=g('matches'),
+      recompetedays=g('recompetedays'), verdict=g('verdict'),
+      heroline=g('heroline'), cta=g('cta'), greet=g('greet'), bookhdr=g('bookhdr');
 
-  if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — Capture Brief · Contract Fetch'; }
-  setText('[data-p=agencyline]', agency ? ('Recompete exposure · ' + agency) : 'Federal recompete exposure');
+  if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — Capture Drop · Contract Fetch'; }
+  if(agency){ setText('[data-p=agency]', sub || agency); }
+  if(naics)  setText('[data-p=naics]', naics);
+  if(niche)  setText('[data-p=niche]', niche);
+  if(rival)  setText('[data-p=rival]', rival);
+  if(city)   setText('[data-p=city]', city);
+  if(state)  setText('[data-p=state]', state);
+  if(contract) setText('[data-p=contract]', contract);
 
+  // situation strip
   var hasReadout = !!(runrate || agency || recompete);
   show('#situation', hasReadout);
   if(runrate) setText('[data-p=runrate]', runrate);
   if(sub||agency) setText('[data-p=agency]', sub || agency);
   if(recompete) setText('[data-p=recompete]', recompete);
 
-  if(firm && (agency || runrate)){
-    var line = 'This brief was prepared for ' + firm;
+  // recompete dial: days + arc
+  if(recompetedays){
+    setText('[data-p=recompetedays]', recompetedays);
+    var days = parseInt(recompetedays,10);
+    var arc = document.getElementById('dialArc');
+    if(arc && !isNaN(days)){
+      var C = 213.6; // 2*pi*34
+      // fewer days remaining => more of the ring "spent" (filled). cap at 365-day window.
+      var frac = Math.max(0, Math.min(1, 1 - (days/365)));
+      arc.setAttribute('stroke-dashoffset', (C*(1-frac)).toFixed(1));
+    }
+  }
+  // first verdict chip override (optional)
+  if(verdict){
+    var vEl=document.querySelector('.opps .verdict[data-p=verdict]');
+    if(vEl){
+      var t=verdict.toUpperCase(); vEl.textContent=t;
+      vEl.className='verdict ' + (t.indexOf('NO')>-1?'no':(t.indexOf('WATCH')>-1?'watch':'bid'));
+      vEl.setAttribute('data-p','verdict');
+    }
+  }
+
+  // hero line
+  if(heroline){ setText('[data-p=heroline]', heroline); show('[data-p=heroline]', true); }
+  else if(firm && (agency || runrate)){
+    var line = 'This Drop was built for ' + firm;
     if(runrate) line += ', a federal contractor doing ' + runrate;
     if(agency) line += ' with the ' + agency;
     line += '.';
     setText('[data-p=heroline]', line);
     show('[data-p=heroline]', true);
   }
-  if(firm) setText('[data-p=cta]', 'Build my ' + firm + ' roadmap →');
-  if(contact){ setText('[data-p=contact]', contact); show('[data-p=greet]', true); }
+
+  // CTA label
+  if(cta) setText('[data-p=cta]', cta);
+  else if(firm) setText('[data-p=cta]', 'Build my ' + firm + ' Drop →');
+
+  if(greet){ setText('[data-p=contact]', greet); show('[data-p=greet]', true); }
+  else if(contact){ setText('[data-p=contact]', contact); show('[data-p=greet]', true); }
 
   // booking header + Calendly prefill (name + company only; never email in a URL)
-  if(firm) setText('[data-p=bookhdr]', firm + "’s Free 30-Day Federal Capture Roadmap");
+  if(bookhdr) setText('[data-p=bookhdr]', bookhdr);
+  else if(firm) setText('[data-p=bookhdr]', firm + "’s Free 30-Day Federal Capture Roadmap");
   var calEl = document.getElementById('cal-embed');
   if(calEl){
     var u = calEl.getAttribute('data-url');
@@ -562,7 +635,7 @@
     rev.forEach(function(e){io.observe(e);});
   } else { rev.forEach(function(e){e.classList.add('in');}); }
 
-  // count-up
+  // count-up (any [data-count])
   var counted=false;
   function runCount(){
     if(counted) return; counted=true;
@@ -573,11 +646,18 @@
       setTimeout(function(){ el.textContent=end; }, dur+250);
     });
   }
-  var sb=document.querySelector('.stats');
-  if(sb && 'IntersectionObserver' in window){
-    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runCount();io2.disconnect();}});},{threshold:.4});
-    io2.observe(sb);
-  } else { runCount(); }
+  runCount();
+
+  // sticky CTA: show after hero scrolls past, hide near the booking section
+  var stick=document.getElementById('stick'), book=document.getElementById('book');
+  function onScroll(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    var past = y > 620;
+    var atBook = book && (book.getBoundingClientRect().top < window.innerHeight*0.85);
+    if(past && !atBook) stick.classList.add('on'); else stick.classList.remove('on');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll); onScroll();
 })();
 </script>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
