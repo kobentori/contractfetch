@@ -285,8 +285,10 @@
 .splash{position:relative;background:var(--navy);color:#e7dfcb;overflow:hidden;border-bottom:2px solid var(--gold)}
 .splash .bg{position:absolute;inset:0;background:url('img/capitol.jpg') center 28%/cover;opacity:.16}
 .splash .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,31,49,.94),rgba(13,31,49,.66))}
-.splash .in{position:relative;max-width:var(--maxw);margin:0 auto;padding:clamp(30px,4.4vw,54px) 30px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
-.splash .l{max-width:62ch}
+.splash .in{position:relative;max-width:var(--maxw);margin:0 auto;padding:clamp(26px,3.6vw,44px) 30px;display:grid;grid-template-columns:1fr 430px;gap:42px;align-items:center}
+.splash .l{max-width:none}
+.splash-cal{background:#fbfaf4;border:1.5px solid var(--gold);box-shadow:0 16px 44px rgba(0,0,0,.38);overflow:hidden}
+@media(max-width:880px){.splash .in{grid-template-columns:1fr;gap:24px}.splash-cal{max-width:480px}}
 .splash .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2)}
 .splash h2{color:#fff;font-size:clamp(1.55rem,3vw,2.3rem);margin:.25em 0 .3em;line-height:1.04}
 .splash p{color:#cdd8e3;font-size:1.04rem;max-width:56ch;margin:0}
@@ -303,7 +305,9 @@
       <p>30 minutes with the founder. We build a roadmap on <b style="color:#fff" data-p="firm">your</b> real federal record — yours to keep whether or not you ever subscribe.</p>
       <div class="assure"><span><b>✓</b> 30 minutes</span><span><b>✓</b> no obligation</span><span><b>✓</b> you keep the roadmap</span></div>
     </div>
-    <a class="btn btn-primary btn-lg" href="#book" data-p="cta" style="white-space:nowrap;background:var(--gold);border-color:var(--gold);color:var(--navy)">Get my free Capture Drop →</a>
+    <div class="splash-cal">
+      <div class="calendly-inline-widget" id="cal-embed-top" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:300px;height:540px"></div>
+    </div>
   </div>
 </section>
 
@@ -650,13 +654,15 @@
   // booking header + Calendly prefill (name + company only; never email in a URL)
   if(bookhdr) setText('[data-p=bookhdr]', bookhdr);
   else if(firm) setText('[data-p=bookhdr]', firm + "’s Free 30-Day Federal Capture Roadmap");
-  var calEl = document.getElementById('cal-embed');
-  if(calEl){
-    var u = calEl.getAttribute('data-url');
-    if(contact) u += '&name=' + encodeURIComponent(contact);
-    if(firm)    u += '&a1=' + encodeURIComponent(firm);
-    calEl.setAttribute('data-url', u);
-  }
+  ['cal-embed','cal-embed-top'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){
+      var u = el.getAttribute('data-url');
+      if(contact) u += '&name=' + encodeURIComponent(contact);
+      if(firm)    u += '&a1=' + encodeURIComponent(firm);
+      el.setAttribute('data-url', u);
+    }
+  });
 
   // reveal on scroll
   var rev = [].slice.call(document.querySelectorAll('.reveal'));
