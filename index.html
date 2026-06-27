@@ -275,12 +275,12 @@
   <div class="in">
     <div class="brand">
       <span aria-hidden="true">
-        <img src="img/logo.png" alt="Contract Fetch" style="height:46px;width:auto;display:block">
+        <img src="img/logo.png" alt="Contract Fetch" style="height:58px;width:auto;display:block;margin-right:4px">
       </span>
       <span><span class="nm">Contract Fetch</span><br><span class="tg">Federal Capture Intelligence</span></span>
     </div>
-    <span class="live"><span class="d"></span>Drop building for <span style="color:var(--navy);font-weight:500" data-p="firm">your firm</span></span>
-    <a class="btn btn-primary" href="#book" data-p="cta">Get my free Federal Bid-Win Plan →</a>
+    <span class="live"><span class="d"></span>Now building · <span style="color:var(--navy);font-weight:500" data-p="firm">your firm</span></span>
+    <a class="btn btn-primary" href="#book">Claim your seat →</a>
   </div>
 </div>
 
@@ -517,7 +517,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
           <span class="cls">Unclassified // Planning Use</span>
         </div>
       </div>
-      <p class="dropcap">This is a <b>sample</b>. Your live Drop runs on <b data-p="firm">your</b> real awards — built in 48 hours, free.</p>
+      <p class="dropcap">This is a <b>sample</b>. Your live Plan runs on <b data-p="firm">your</b> real awards — built in 48 hours, free.</p>
     </div>
   </section>
 
@@ -597,7 +597,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
         <ul class="ck">
           <li><span class="tick">✓</span><span class="txt"><b>The Federal Bid-Win Plan.</b> <span class="d">Your custom roadmap, on your real contracts, in 48 hours.</span></span><span class="val">$2,500</span></li>
           <li><span class="tick">✓</span><span class="txt"><b>Founding rate, locked for life.</b> <span class="d">$1,000 / 4 weeks before it rises to $1,500 at close.</span></span><span class="val">$6,000+/yr</span></li>
-          <li><span class="tick">✓</span><span class="txt"><b>Full dossier on your #1 rival.</b> <span class="d">The incumbent you most need to beat — <span data-p="rival">named in your Drop</span>.</span></span><span class="val">$750</span></li>
+          <li><span class="tick">✓</span><span class="txt"><b>Full dossier on your #1 rival.</b> <span class="d">The incumbent you most need to beat — <span data-p="rival">named in your Plan</span>.</span></span><span class="val">$750</span></li>
           <li><span class="tick">✓</span><span class="txt"><b>Niche exclusivity.</b> <span class="d">We never arm your competitor — structurally true under FAR 9.5.</span></span><span class="val">priceless</span></li>
         </ul>
       </div>
@@ -747,7 +747,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
   // hero line
   if(heroline){ setText('[data-p=heroline]', heroline); show('[data-p=heroline]', true); }
   else if(firm && (agency || runrate)){
-    var line = 'This Drop was built for ' + firm;
+    var line = 'This Plan was built for ' + firm;
     if(runrate) line += ', a federal contractor doing ' + runrate;
     if(agency) line += ' with the ' + agency;
     line += '.';
@@ -757,7 +757,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
 
   // CTA label
   if(cta) setText('[data-p=cta]', cta);
-  else if(firm) setText('[data-p=cta]', 'Build my ' + firm + ' Drop →');
+  else if(firm) setText('[data-p=cta]', 'Build my ' + firm + ' Plan →');
 
   if(greet){ setText('[data-p=contact]', greet); show('[data-p=greet]', true); }
   else if(contact){ setText('[data-p=contact]', contact); show('[data-p=greet]', true); }
