@@ -453,7 +453,8 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     </div>
     <div class="herointel reveal d2">
       <span class="il">● Live intel</span>
-      <p>We've already pulled <b data-p="firm">your firm</b>'s federal record — every active award, the renewals and recompetes coming due, and who's working <b data-p="niche">your lane</b>. Your briefing names every pursuit you can win — verified against SAM, USAspending and FPDS before you ever see it.</p>
+      <p class="rcgeneral">We've already pulled <b data-p="firm">your firm</b>'s federal record — every active award, the renewals and recompetes coming due, and who's working <b data-p="niche">your lane</b>. Your briefing names every pursuit you can win — verified against SAM, USAspending and FPDS before you ever see it.</p>
+      <p class="rcspecific" style="display:none">We're already tracking your <b data-p="rc_contract"></b> at <b data-p="rc_agency"></b> — an upcoming recompete <b data-p="rc_days"></b> days out. Your briefing maps the move to keep it, plus every new pursuit you can win — checked against SAM, USAspending and FPDS first.</p>
     </div>
   </section>
 
@@ -785,6 +786,7 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
   var contract=g('contract'), rival=g('rival'), naics=g('naics'), niche=g('niche'),
       city=g('city'), state=g('state'), matches=g('matches'),
       recompetedays=g('recompetedays'), verdict=g('verdict'),
+      rc_contract=g('rc_contract'), rc_agency=g('rc_agency'), rc_days=g('rc_days'),
       heroline=g('heroline'), cta=g('cta'), greet=g('greet'), bookhdr=g('bookhdr');
 
   if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — 30-Day Capture Sprint · Contract Fetch'; }
@@ -794,7 +796,15 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
   if(rival)  setText('[data-p=rival]', rival);
   if(city)   setText('[data-p=city]', city);
   if(state)  setText('[data-p=state]', state);
-  if(contract) setText('[data-p=contract]', contract);
+  // truthful specific-recompete hook: shows ONLY when make_links emitted a coherent
+  // bundle (contract + its OWN agency + day-count, all from one genuine recompete);
+  // otherwise the general intel copy stays.
+  if(rc_contract && rc_agency && rc_days){
+    setText('[data-p=rc_contract]', rc_contract);
+    setText('[data-p=rc_agency]', rc_agency);
+    setText('[data-p=rc_days]', rc_days);
+    show('.rcspecific', true); show('.rcgeneral', false);
+  }
 
   // home-lane map pin -> firm's actual CA location (hide the CA map for out-of-state firms)
   (function(){
