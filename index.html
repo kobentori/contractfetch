@@ -269,7 +269,7 @@
 <body>
 
 <div class="annc"><span class="o">★</span> &nbsp;<b>The Founding 13</b> · one seat per niche · <span id="cd">closes 04&nbsp;Jul&nbsp;2026</span> &nbsp;<span class="o">★</span></div>
-<script>(function(){var el=document.getElementById('cd');if(!el)return;var t=new Date(2026,6,4,23,59,59);function u(){var d=Math.ceil((t-new Date())/864e5);if(d>1)el.innerHTML='closes in <b>'+d+'&nbsp;days</b> · 04&nbsp;Jul';else if(d===1)el.innerHTML='<b>closes tomorrow</b> · 04&nbsp;Jul';else if(d===0)el.innerHTML='<b>closing today</b>';else el.textContent='applications closed';}u();setInterval(u,36e5);})();</script>
+<script>(function(){var el=document.getElementById('cd');if(!el)return;var t=new Date(2026,6,4,23,59,59);function p(n){return(n<10?'0':'')+n;}function u(){var s=Math.floor((t-new Date())/1000);if(s<=0){el.textContent='applications closed';return;}var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);el.innerHTML='closes in <b>'+d+'d&nbsp;'+p(h)+'h&nbsp;'+p(m)+'m</b>';}u();setInterval(u,1000);})();</script>
 
 <div class="mast">
   <div class="in">
@@ -320,9 +320,9 @@
 
 <style>
 .hero{align-items:start}
-.hero .famrow{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:15px 34px;margin:26px 0 4px;justify-content:start}
-.hero .famrow .k{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--mutemono);margin-bottom:3px}
-.hero .famrow .v{font-family:var(--display);font-size:1.06rem;font-weight:600;color:var(--navy);line-height:1.12}
+.famrow{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:15px 34px;margin:26px 0 4px;justify-content:start}
+.famrow .k{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--mutemono);margin-bottom:3px}
+.famrow .v{font-family:var(--display);font-size:1.06rem;font-weight:600;color:var(--navy);line-height:1.12}
 .hero .creds{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:10px}
 .hero .creds li{position:relative;padding-left:23px;font-family:var(--body);font-size:1.04rem;color:var(--ink);line-height:1.35}
 .hero .creds li:before{content:"";position:absolute;left:1px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
@@ -331,7 +331,7 @@
 .calhd{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--paper-2);border-bottom:1.5px solid var(--navy);padding:12px 16px}
 .calhd .d{width:8px;height:8px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite;flex:none}
 .dropshow{max-width:560px}
-@media(max-width:880px){.hero{grid-template-columns:1fr;gap:30px}.hero .famrow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:880px){.hero{grid-template-columns:1fr;gap:30px}.famrow{grid-template-columns:repeat(2,1fr)}}
 .hero{position:relative;padding-bottom:62px}
 .hero::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(125% 130% at 15% -12%, #1c3e5c 0%, #0d2236 46%, #06121e 100%);z-index:0}
 .hero::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(44% 56% at 24% 22%, rgba(205,168,96,.20), transparent 68%);z-index:0;pointer-events:none}
@@ -341,8 +341,8 @@
 .hero h1 .em{color:#e8cd88}
 .hero .sub{color:#d3dee9}
 .hero .sub b{color:#fff}
-.hero .famrow .k{color:#8ba1b6}
-.hero .famrow .v{color:#f4f1e8}
+.famrow .k{color:#8ba1b6}
+.famrow .v{color:#f4f1e8}
 .hero .creds li{color:#dde6ef}
 .hero .creds li:before{background:#d2ad62}
 .hero .heronote{color:#95a9bc}
@@ -352,6 +352,10 @@
 .hero .heroline{background:rgba(255,255,255,.05);border-left-color:#d2ad62;color:#eedab2}
 .hero .calcard{box-shadow:0 28px 66px rgba(0,0,0,.52)}
 .hero .calhd{background:#13283d;color:#f1ead8;border-bottom-color:#d2ad62}
+.hero .heroproof{font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:#8ba1b6;margin:20px 0 0}
+.hero .cta{margin-top:28px}
+.famrow{margin:22px 0 0}
+#whatwefound .herointel{max-width:60ch}
 .herointel{border:1px solid rgba(210,173,98,.4);border-left:3px solid #d2ad62;background:rgba(255,255,255,.045);padding:14px 18px;margin:24px 0 0}
 .herointel .il{display:block;font-family:var(--mono);font-size:.57rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d2ad62;margin-bottom:7px}
 .herointel p{margin:0;font-family:var(--body);font-size:1.05rem;line-height:1.5;color:#e4ebf2}
@@ -407,40 +411,45 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
   <!-- ============ HERO + BOOK ============ -->
   <section class="hero wrap">
     <div class="copy">
-      <span class="lbl ox reveal">For <span data-p="niche">small federal contractors</span> · working <span data-p="agency">your agencies</span></span>
-      <h1 class="reveal">Are you missing out on the <span class="em">next big bid?</span></h1>
-      <p class="sub reveal d1">We run capture for a handful of California federal contractors — every recompete on your vehicles tracked, your rivals watched, the first proposal drafted. <b>Built on your real record. Free, in 48 hours.</b></p>
-      <p class="heroline reveal" data-p="heroline" style="display:none"></p>
-
-      <div class="famrow reveal d1">
-        <div class="fc"><span class="k">Your firm</span><span class="v" data-p="firm">Your firm</span></div>
-        <div class="fc"><span class="k">Federal run-rate</span><span class="v" data-p="runrate">from SAM.gov</span></div>
-        <div class="fc"><span class="k">Top agency</span><span class="v" data-p="agency">from FPDS</span></div>
-        <div class="fc"><span class="k">Nearest recompete</span><span class="v"><span data-p="recompetedays">—</span> days out</span></div>
+      <span class="lbl reveal">Federal Capture Intelligence</span>
+      <h1 class="reveal">We identify your next three federal pursuits <span class="em">— and draft the first proposal.</span></h1>
+      <p class="sub reveal d1">Built from your award history, capabilities, and upcoming federal opportunities. Begin with a complimentary four-week capture pilot.</p>
+      <div class="cta reveal d2">
+        <a class="btn btn-primary btn-lg" href="#book">Review your private briefing →</a>
+        <a class="ctalink" href="tel:+12025034503">or call <b>(202)&nbsp;503-4503</b></a>
       </div>
-
-      <div class="herointel reveal d2">
-        <span class="il">● Live intel · your federal record</span>
-        <p>We're tracking <b data-p="contract">your prime vehicle</b> at <b data-p="agency">your top agency</b> — it recompetes in <b data-p="recompetedays">—</b> days, and <b data-p="rival">the incumbent</b> is already positioning. <b data-p="firm">Your firm</b> shouldn't be the last to move.</p>
-      </div>
-
-      <p class="heronote reveal d2">No fee is ever tied to whether you win <b>(FAR&nbsp;52.203-5)</b>. Pick a time → we build your Federal Bid-Win Plan live on the call.</p>
-      <a class="ctalink reveal d2" href="tel:+12025034503" style="margin-top:14px;display:inline-block">Prefer to talk first? <b>(202)&nbsp;503-4503</b></a>
+      <p class="heroproof reveal d2">Built on SAM.gov · USAspending · FPDS award data.</p>
     </div>
 
     <!-- THE LIVE FEDERAL BID-WIN PLAN -->
     <div class="herocal reveal d1">
       <div class="calcard">
-        <div class="calhd"><span class="d"></span>Book your free Federal Bid-Win Plan · 30 min</div>
+        <div class="calhd"><span class="d"></span>Book your private briefing · 30 min</div>
         <div class="calendly-inline-widget" id="cal-embed-top" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:300px;height:560px"></div>
       </div>
     </div>
   </section>
 
+  <!-- ============ WHAT WE FOUND (personalized · hidden until a firm loads) ============ -->
+  <section class="wrap band-dark" id="whatwefound" style="display:none">
+    <span class="lbl reveal">What we found on your record</span>
+    <h2 class="reveal"><span data-p="firm">Your firm</span> — here's where you stand.</h2>
+    <div class="famrow reveal d1">
+      <div class="fc"><span class="k">Federal run-rate</span><span class="v" data-p="runrate">—</span></div>
+      <div class="fc"><span class="k">Top agency</span><span class="v" data-p="agency">—</span></div>
+      <div class="fc"><span class="k">Primary NAICS</span><span class="v" data-p="naics">—</span></div>
+      <div class="fc"><span class="k">Nearest recompete</span><span class="v"><span data-p="recompetedays">—</span> days out</span></div>
+    </div>
+    <div class="herointel reveal d2">
+      <span class="il">● Live intel</span>
+      <p>We're already tracking <b data-p="contract">your prime vehicle</b> at <b data-p="agency">your top agency</b> — it recompetes in <b data-p="recompetedays">—</b> days, and <b data-p="rival">the incumbent</b> is positioning. Your briefing names every winnable pursuit.</p>
+    </div>
+  </section>
+
   <!-- ============ THE FEDERAL BID-WIN PLAN (showcase) ============ -->
   <section class="wrap">
-    <span class="secnum reveal">§ 00 — The Deliverable</span>
-    <h2 class="reveal">The Free 48-Hour Federal Bid-Win Plan,<br>built for <span data-p="firm">your firm</span>.</h2>
+    <span class="lbl reveal">What you receive</span>
+    <h2 class="reveal">Your Federal Bid-Win Plan,<br>built for <span data-p="firm">your firm</span>.</h2>
     <p class="reveal" style="max-width:64ch;color:var(--ink-2);margin:-4px 0 28px;font-family:var(--body);font-size:1.12rem">Every winnable bid on your record — <b style="color:var(--navy)">ranked</b>. Recompetes <b style="color:var(--navy)">clocked</b>. Rivals <b style="color:var(--navy)">flagged</b>. Your first proposal <b style="color:var(--navy)">drafted</b>. Built on your real federal awards in 48 hours — yours to keep, free, whether or not you ever subscribe.</p>
     <div class="dropshow reveal d1">
       <div class="drop" aria-label="Sample Federal Bid-Win Plan, redacted">
@@ -522,13 +531,8 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
   </section>
 
   <!-- ============ PRICE ANCHOR ============ -->
-  <section class="wrap band-dark" style="padding-top:42px">
-    <div class="situation reveal" id="situation" style="display:none;margin-top:0;margin-bottom:30px">
-      <div class="cell"><span class="k">Annual run-rate</span><span class="v" data-p="runrate">—</span></div>
-      <div class="cell"><span class="k">Top agency</span><span class="v" data-p="agency">—</span></div>
-      <div class="cell"><span class="k">Nearest recompete</span><span class="v" data-p="recompete">—</span></div>
-    </div>
-    <span class="secnum reveal">§ 01 — The Math</span>
+  <section class="wrap band-dark">
+    <span class="lbl reveal">The math</span>
     <h2 class="reveal">One proposal costs more than a year of this.</h2>
     <div class="anchor reveal">
       <div class="a"><span class="k">Consultant per proposal</span><div class="n"><s>$5K–$20K</s></div><span class="sm">+ 40 hours of your week,<br>per bid, every time</span></div>
@@ -537,19 +541,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     </div>
   </section>
 
-  <!-- ============ CLIENTS ============ -->
-  <section class="wrap" style="padding:0">
-    <div class="clients reveal">
-      <span class="lab">Working with</span>
-      <div class="marks">
-        <span class="mk"><img class="cl" src="img/starside.png" alt="Starside Security"></span>
-        <span class="mk"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span></span>
-        <span class="mk"><span class="nellislogo">nellis</span></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TESTIMONIAL: STARSIDE ============ -->
+  <!-- ============ PROOF: STARSIDE ============ -->
   <section class="wrap" style="border-top:none;padding-top:54px">
     <div class="quote reveal">
       <div class="bar"></div>
@@ -563,25 +555,13 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     </div>
   </section>
 
-  <!-- ============ PROBLEM -> SOLUTION ============ -->
-  <section class="wrap band-dark" id="solution">
-    <span class="secnum reveal">§ 02 — Findings → Action</span>
-    <h2 class="reveal">The bid you could have won<br>closed before you saw it.</h2>
-    <div class="ps">
-      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg></span><div class="ps-prob">I don't know which bids I can actually win.</div><div class="ps-sol"><b>Bid / No-Bid gate</b>Every opportunity run through your real gate — NAICS, size, certs, vehicle. You chase only what fits.</div></div>
-      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ps-prob">My biggest contract recompetes and I miss the window.</div><div class="ps-sol"><b>Recompete clock</b>Every end-date tracked. A winnable recompete never blindsides you again.</div></div>
-      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18M6 12h12M9 19h6"/></svg></span><div class="ps-prob">I'm drowning in 200 opportunity emails a week.</div><div class="ps-sol"><b>Normalized feed</b>Your whole market filtered to the handful of bids that fit — weekly, not an inbox to triage.</div></div>
-      <div class="ps-row reveal"><span class="ps-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/></svg></span><div class="ps-prob">Proposals take forever and start from a blank page.</div><div class="ps-sol"><b>Submission-ready drafts</b>When a bid clears the gate, your first draft is written. You review and submit — never start from zero.</div></div>
-    </div>
-  </section>
-
   <!-- ============ OFFER ============ -->
   <section class="wrap" id="offer">
-    <span class="secnum reveal">§ 03 — The Complete Offer</span>
+    <span class="lbl reveal">The offer</span>
     <h2 class="reveal">Everything your seat includes.</h2>
-    <p class="lead reveal" style="font-style:italic;color:var(--navy)">Thirteen founding seats — one firm per niche — closing on the Fourth. Capped at thirteen because every seat gets hands-on research from the founder.</p>
+    <p class="lead reveal" style="font-style:italic;color:var(--navy)">Thirteen founding seats, one firm per niche — capped because every seat gets hands-on research from the founder.</p>
     <div class="schedule reveal">
-      <div class="hd"><span class="t">Schedule A — What You Get</span><span class="s">Founding 13 · Independence Day Charter</span></div>
+      <div class="hd"><span class="t">What you get</span><span class="s">Founding 13 · one firm per niche</span></div>
       <div class="grp">
         <div class="grp-h">I. The Engine — always on</div>
         <ul class="ck">
@@ -593,7 +573,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
         </ul>
       </div>
       <div class="grp">
-        <div class="grp-h">II. Charter bonuses — Founding 13 only, free up front</div>
+        <div class="grp-h">II. Founding bonuses — Founding 13 only, free up front</div>
         <ul class="ck">
           <li><span class="tick">✓</span><span class="txt"><b>The Federal Bid-Win Plan.</b> <span class="d">Your custom roadmap, on your real contracts, in 48 hours.</span></span><span class="val">$2,500</span></li>
           <li><span class="tick">✓</span><span class="txt"><b>Founding rate, locked for life.</b> <span class="d">$1,000 / 4 weeks before it rises to $1,500 at close.</span></span><span class="val">$6,000+/yr</span></li>
@@ -611,7 +591,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
       </div>
       <div class="sfoot">
         <span class="av">Engine value <b>$50,000+/yr</b> · Up-front bonuses <b>~$5,000</b> · <b>free</b> until you verify</span>
-        <a class="btn btn-primary" href="#book" data-p="cta">Get my free Federal Bid-Win Plan →</a>
+        <a class="btn btn-primary" href="#book">Review your private briefing →</a>
       </div>
     </div>
   </section>
@@ -632,7 +612,7 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
 
   <!-- ============ GUARANTEE ============ -->
   <section class="wrap">
-    <span class="secnum reveal">§ 04 — The Guarantee</span>
+    <span class="lbl reveal">The guarantee</span>
     <h2 class="reveal">We'll tell you when <em>not</em> to bid.</h2>
     <p class="lead reveal" style="margin-bottom:18px">Every other capture shop's fee depends on you bidding — so they call everything a "must-bid." Ours doesn't. That candor is the product.</p>
     <div class="gp reveal">
@@ -652,8 +632,8 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
 
   <!-- ============ BOOK ============ -->
   <section class="wrap band-dark" id="book">
-    <span class="secnum reveal">§ 05 — Claim One Of The Founding 13</span>
-    <h2 class="reveal">Book the 30-minute call.</h2>
+    <span class="lbl reveal">Founding 13 · one seat per niche</span>
+    <h2 class="reveal">Book your private briefing.</h2>
     <p class="lead reveal"><span data-p="greet" style="display:none"><span data-p="contact"></span> — </span>We build your free Federal Bid-Win Plan from <span data-p="firm">your</span> real federal record, walk you through it, and — if it's a fit — reserve your niche. If it isn't, you keep the roadmap.</p>
     <div class="foundercard reveal"><img src="img/robert.jpg" alt="Robert J. Coventry III"><div><div class="fn">Robert J. Coventry III</div><div class="ft">Founder · builds every Plan himself</div></div></div>
     <ul class="bookassure reveal">
@@ -685,8 +665,8 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
 <!-- STICKY CTA -->
 <div class="stick" id="stick" aria-hidden="true">
   <div class="in">
-    <div class="t"><span class="sm">Founding 13 · closes 04 Jul 2026</span><br><b>Free Federal Bid-Win Plan on <span data-p="firm">your</span> real awards — 48 h, before you pay.</b></div>
-    <a class="btn" href="#book" data-p="cta">Get my free Federal Bid-Win Plan →</a>
+    <div class="t"><span class="sm">Founding 13 · closing soon</span><br><b>Your private briefing — free, on <span data-p="firm">your</span> real federal record.</b></div>
+    <a class="btn" href="#book">Review your briefing →</a>
   </div>
 </div>
 
@@ -715,9 +695,8 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
   if(state)  setText('[data-p=state]', state);
   if(contract) setText('[data-p=contract]', contract);
 
-  // situation strip
-  var hasReadout = !!(runrate || agency || recompete);
-  show('#situation', hasReadout);
+  // what-we-found block — only when a firm is loaded
+  show('#whatwefound', !!firm);
   if(runrate) setText('[data-p=runrate]', runrate);
   if(sub||agency) setText('[data-p=agency]', sub || agency);
   if(recompete) setText('[data-p=recompete]', recompete);
