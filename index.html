@@ -72,6 +72,18 @@
   .mast .live{display:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);align-items:center;gap:7px;margin-left:auto;margin-right:18px;max-width:32ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .mast .live .d{width:7px;height:7px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite}
   @media(min-width:1040px){.mast .live{display:flex}}
+  @media(max-width:600px){
+    .mast .in{padding:7px 13px;gap:8px}
+    .brand{gap:8px}
+    .brand img{height:40px!important;margin-right:0!important}
+    .brand .nm{font-size:1.1rem}
+    .brand .tg{font-size:.48rem;letter-spacing:.14em;margin-top:3px}
+    .mast a.btn{padding:8px 11px;font-size:.6rem;letter-spacing:.02em}
+  }
+  @media(max-width:360px){
+    .brand .nm{font-size:1rem}
+    .mast a.btn{font-size:.56rem;padding:8px 9px}
+  }
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,185,140,.55)}70%{box-shadow:0 0 0 7px rgba(95,185,140,0)}100%{box-shadow:0 0 0 0 rgba(95,185,140,0)}}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:30px}
