@@ -458,7 +458,6 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     <span class="lbl reveal">What we found on your record</span>
     <h2 class="reveal"><span data-p="firm">Your firm</span> — here's where you stand.</h2>
     <div class="famrow reveal d1">
-      <div class="fc"><span class="k">Federal run-rate</span><span class="v" data-p="runrate">—</span></div>
       <div class="fc"><span class="k">Top agency</span><span class="v" data-p="agency">—</span></div>
       <div class="fc"><span class="k">Primary NAICS</span><span class="v" data-p="naics">—</span></div>
       <div class="fc"><span class="k">Next contract date</span><span class="v"><span data-p="recompetedays">—</span> days out</span></div>
@@ -800,6 +799,16 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
       recompetedays=g('recompetedays'), verdict=g('verdict'),
       rc_contract=g('rc_contract'), rc_agency=g('rc_agency'), rc_days=g('rc_days'),
       heroline=g('heroline'), cta=g('cta'), greet=g('greet'), bookhdr=g('bookhdr');
+
+  // Clean the address bar: params are captured above, so swap the long personalization
+  // query string for the branded /slug URL (matches the QR). Nothing visible is lost,
+  // and the firm's data (incl. the old run-rate) no longer sits exposed in the URL.
+  try {
+    if (firm && window.history && history.replaceState) {
+      var _slug = firm.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      history.replaceState(null, '', '/' + _slug);
+    }
+  } catch (e) {}
 
   if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — 30-Day Capture Sprint · Contract Fetch'; }
   if(agency){ setText('[data-p=agency]', sub || agency); }
