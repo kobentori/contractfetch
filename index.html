@@ -817,7 +817,10 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
     }
   } catch (e) {}
 
-  if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — 30-Day Capture Sprint · Contract Fetch'; }
+  if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — 30-Day Capture Sprint · Contract Fetch';
+    var _ml=document.querySelector('.mastlink');
+    if(_ml){ var _fs=firm.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); if(_fs) _ml.href='/founder/?from='+_fs; }
+  }
   if(agency){ setText('[data-p=agency]', sub || agency); }
   if(naics)  setText('[data-p=naics]', naics);
   if(niche)  setText('[data-p=niche]', niche);
