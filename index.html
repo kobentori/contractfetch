@@ -71,6 +71,7 @@
   .mast .in{gap:24px}
   .mastlink{margin-left:auto;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);text-decoration:none;white-space:nowrap;border-bottom:1.5px solid var(--gold)}
   .mastlink:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+  .mastlink~.mastlink{margin-left:0}
   @media(max-width:600px){.mastlink{font-size:.58rem;letter-spacing:.05em}}
   .mast .live{display:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mutemono);align-items:center;gap:7px;margin-left:auto;margin-right:18px;max-width:32ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .mast .live .d{width:7px;height:7px;border-radius:50%;background:#5fb98c;animation:pulse 2.4s infinite}
@@ -300,6 +301,7 @@
       <span><span class="nm">Contract Fetch</span><br><span class="tg">Find. Pursue. Win.</span></span>
     </div>
     <a class="mastlink" href="/founder">The Founder</a>
+    <a class="mastlink" href="/operation">The Operation</a>
     <a class="btn btn-primary" href="#book">Claim your seat →</a>
   </div>
 </div>
@@ -782,7 +784,7 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
   <div class="in" style="position:relative">
     <span style="font-family:var(--display);font-size:1.2rem;color:#ece3cf">Contract Fetch</span> &nbsp;·&nbsp; Federal Capture Intelligence &nbsp;·&nbsp; Est. MMXXVI
     <div class="cl"><span style="color:#74879b;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase">Working with</span><img src="img/starside.png" alt="Starside Security"><span class="bhlogo"><span>BASE</span><span class="dot"></span><span>HILL</span></span><span class="nellislogo">nellis</span></div>
-    <p style="margin:14px 0 2px;color:#9fb1c4;line-height:1.8">400 Spectrum Center Drive, Suite 909 &middot; Irvine, CA 92618<br><a href="mailto:coventry@getcontractfetch.com" style="color:#bb9c5e;text-decoration:none">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503" style="color:#bb9c5e;text-decoration:none">(202) 503-4503</a> &nbsp;&middot;&nbsp; <a href="/founder" style="color:#bb9c5e;text-decoration:none">The founder</a></p>
+    <p style="margin:14px 0 2px;color:#9fb1c4;line-height:1.8">400 Spectrum Center Drive, Suite 909 &middot; Irvine, CA 92618<br><a href="mailto:coventry@getcontractfetch.com" style="color:#bb9c5e;text-decoration:none">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503" style="color:#bb9c5e;text-decoration:none">(202) 503-4503</a> &nbsp;&middot;&nbsp; <a href="/founder" style="color:#bb9c5e;text-decoration:none">The founder</a> &nbsp;&middot;&nbsp; <a href="/operation" style="color:#bb9c5e;text-decoration:none">The operation</a></p>
     <p class="far">Contract Fetch provides capture research and proposal support for small federal contractors. Fees are never contingent on whether you win an award (FAR 52.203-5). We work with one firm per solicitation to avoid organizational conflicts of interest (FAR 9.5). © 2026 Contract Fetch.</p>
   </div>
 </footer>
@@ -818,8 +820,11 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
   } catch (e) {}
 
   if(firm){ setText('[data-p=firm]', firm); document.title = firm + ' — 30-Day Capture Sprint · Contract Fetch';
-    var _ml=document.querySelector('.mastlink');
-    if(_ml){ var _fs=firm.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); if(_fs) _ml.href='/founder/?from='+_fs; }
+    var _fs=firm.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    if(_fs){
+      document.querySelectorAll('a[href="/founder"]').forEach(function(a){ a.href='/founder/?from='+_fs; });
+      document.querySelectorAll('a[href="/operation"]').forEach(function(a){ a.href='/operation/?from='+_fs; });
+    }
   }
   if(agency){ setText('[data-p=agency]', sub || agency); }
   if(naics)  setText('[data-p=naics]', naics);

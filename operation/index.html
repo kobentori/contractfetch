@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Operation — Contract Fetch</title>
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/favicon.png">
+<meta name="description" content="Who does the work at Contract Fetch: the founder, the always-on capture engine, and the family capture desk behind both." />
+<script>document.documentElement.className='js';</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#f4f1e8;--paper-2:#ece6d7;--paper-3:#e3dcc9;--card:#fbfaf4;
+    --ink:#211f19;--ink-2:#46423a;--navy:#0d1f31;--navy-2:#16314a;--navy-3:#234a6b;
+    --gold:#9a7b3f;--gold-2:#bb9c5e;--oxblood:#6e1f23;--green:#16a34a;
+    --line:#d2c8b3;--line-2:#c0b59c;--mutemono:#736a57;
+    --display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Newsreader',Georgia,serif;--mono:'Hanken Grotesk',ui-sans-serif,system-ui,-apple-system,sans-serif;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--body);color:var(--ink);font-size:18px;line-height:1.58;background-color:var(--paper);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.06;margin:0 0 .42em;color:var(--navy);letter-spacing:-.012em}
+  h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+  p{margin:0 0 1em}
+  a{color:var(--oxblood)}
+  .mono{font-family:var(--mono)}.muted{color:var(--ink-2)}
+  .lbl{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  .js .reveal.d1{transition-delay:.08s}.js .reveal.d2{transition-delay:.16s}
+  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important;transition:none}*{animation:none!important;transition:none!important}}
+
+  .btn{display:inline-block;font-family:var(--mono);font-weight:500;font-size:.84rem;letter-spacing:.07em;text-transform:uppercase;padding:16px 28px;cursor:pointer;border:1.5px solid var(--navy);transition:.15s;border-radius:0;text-decoration:none;text-align:center}
+  .btn-primary{position:relative;overflow:hidden;background:linear-gradient(180deg,#bb1f27,#8d1318);color:#fff;border:1px solid #76090f;font-weight:600;letter-spacing:.08em;box-shadow:0 5px 16px rgba(140,19,24,.42),inset 0 1px 0 rgba(255,255,255,.22)}
+  .btn-primary:hover{background:linear-gradient(180deg,#d3232c,#a3151c);border-color:#8d1318;color:#fff;transform:translateY(-2px);box-shadow:0 11px 28px rgba(140,19,24,.5),inset 0 1px 0 rgba(255,255,255,.28)}
+
+  .mast{border-bottom:1.5px solid var(--navy);background:linear-gradient(90deg,rgba(244,241,232,.82) 0%,rgba(244,241,232,.92) 45%,rgba(244,241,232,.99) 75%),url('/img/flag.jpg?v=2') center 30%/cover;backdrop-filter:blur(7px);position:sticky;top:0;z-index:40}
+  .mast .in{max-width:var(--maxw);margin:0 auto;padding:6px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand .nm{font-family:var(--display);font-size:1.72rem;font-weight:600;color:var(--navy);line-height:1}
+  .brand .tg{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mutemono);margin-top:5px;white-space:nowrap}
+  .mast a.btn{white-space:nowrap;padding:10px 18px;font-size:.74rem}
+  .mastlink{margin-left:auto;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);text-decoration:none;white-space:nowrap;border-bottom:1.5px solid var(--gold)}
+  .mastlink:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+  .mastlink~.mastlink{margin-left:0}
+  .mastlink.here{color:var(--gold);pointer-events:none}
+  @media(max-width:600px){
+    .mast .in{padding:7px 13px;gap:8px}
+    .brand{gap:8px}
+    .brand img{height:40px!important;margin-right:0!important}
+    .brand .nm{font-size:1.1rem}
+    .brand .tg{font-size:.48rem;letter-spacing:.14em;margin-top:3px}
+    .mast a.btn{padding:8px 11px;font-size:.6rem;letter-spacing:.02em}
+    .mastlink{font-size:.58rem;letter-spacing:.05em}
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:30px}
+  section{padding:clamp(48px,5.5vw,72px) 0;border-top:1.5px solid var(--line-2)}
+  .lead{font-size:1.18rem;color:var(--ink-2);max-width:62ch}
+  .lead b{font-family:var(--display);color:var(--navy);font-weight:600}
+  .golink{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--oxblood);text-decoration:none;border-bottom:1.5px solid var(--gold)}
+  .golink:hover{border-bottom-color:var(--oxblood)}
+
+  .intro{border-top:none;padding-top:56px}
+
+  .band-dark{position:relative;border-top:none;color:#cdd8e3;padding-top:clamp(64px,7vw,88px);padding-bottom:clamp(64px,7vw,88px)}
+  .band-dark::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:linear-gradient(180deg,var(--paper) 0,rgba(244,241,232,0) 14px),radial-gradient(120% 130% at 18% -8%, #163450 0%, #0d2236 52%, #06121e 100%);z-index:0}
+  .band-dark>*{position:relative;z-index:1}
+  .band-dark h2{color:#f7f2e7}
+  .band-dark .lead{color:#cdd8e3}
+  .band-dark .lead b{color:#fff}
+  .band-dark .lbl{color:#d2ad62}
+  .band-dark .contactline{font-family:var(--mono);font-size:.82rem;letter-spacing:.03em;color:#9fb1c4;margin-top:26px}
+  .band-dark .contactline a{color:#bb9c5e;text-decoration:none}
+
+  footer{background:var(--navy);color:#90a3b6;font-family:var(--mono);font-size:.74rem;line-height:1.7;padding:36px 0 48px}
+  footer .in{max-width:var(--maxw);margin:0 auto;padding:0 30px}
+  footer .far{border-top:1px solid var(--navy-2);margin-top:16px;padding-top:16px;color:#74879b;max-width:88ch}
+  footer a{color:#bb9c5e;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="in">
+    <a class="brand" href="/">
+      <span aria-hidden="true">
+        <img src="/img/logo.png" alt="Contract Fetch" style="height:70px;width:auto;display:block;margin-right:4px">
+      </span>
+      <span><span class="nm">Contract Fetch</span><br><span class="tg">Find. Pursue. Win.</span></span>
+    </a>
+    <a class="mastlink" href="/founder">The Founder</a>
+    <span class="mastlink here" aria-current="page">The Operation</span>
+    <a class="btn btn-primary" href="/#book">Claim your seat →</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro wrap">
+    <span class="lbl reveal">The operation</span>
+    <h1 class="reveal">Who does the work.</h1>
+    <p class="lead reveal d1">Every Capture Sprint that leaves this shop is produced the same way, by the same three layers. There are no handoffs and nothing is outsourced. This page is the whole operation - all of it.</p>
+  </section>
+
+  <!-- ============ THE FOUNDER ============ -->
+  <section class="wrap">
+    <span class="lbl reveal">Layer one</span>
+    <h2 class="reveal">The founder.</h2>
+    <p class="lead reveal d1">Robert J. Coventry III reads every briefing before it ships and takes every call himself. He runs the federal capture desk at his family's firm, and he is a named inventor on two granted U.S. patents. The judgment calls - bid or no-bid, price, capture angle - are his, on every client, every time. They are never delegated, because judgment is the part a machine can't do.</p>
+    <p class="reveal d1"><a class="golink" href="/founder">Meet the founder →</a></p>
+  </section>
+
+  <!-- ============ THE ENGINE ============ -->
+  <section class="wrap">
+    <span class="lbl reveal">Layer two</span>
+    <h2 class="reveal">The engine.</h2>
+    <p class="lead reveal d1">The always-on layer. It sweeps every solicitation, award, and recompete in a client's lane across SAM, USAspending, and FPDS - every contract end-date clocked, every rival's wins logged, every set-aside and size gate checked against the client's actual registrations. Nothing it finds reaches a briefing until it survives the verify gate: re-confirmed against the primary government record, or thrown out.</p>
+    <p class="lead reveal d1">It watches every day. It does not get sick, does not take vacation, does not miss a posting, and cannot be hired away by a competitor.</p>
+  </section>
+
+  <!-- ============ THE DESK BEHIND IT ============ -->
+  <section class="wrap">
+    <span class="lbl reveal">Layer three</span>
+    <h2 class="reveal">The desk behind it.</h2>
+    <p class="lead reveal d1"><b>Starside Security &amp; Investigation</b> - the family firm since 1998. A GSA schedule holder licensed across five states, running its own federal capture desk with nine figures on the table. That desk is where the method comes from: the line-by-line pricing rebuilds, the public-records pulls, the debrief demands, the wage-determination discipline. Contract Fetch is that desk's discipline, offered outside the family for the first time.</p>
+  </section>
+
+  <!-- ============ WHY IT'S BUILT THIS WAY ============ -->
+  <section class="wrap band-dark">
+    <span class="lbl reveal">Why it's built this way</span>
+    <h2 class="reveal">You aren't paying for bodies.</h2>
+    <p class="lead reveal d1">Most capture shops sell hours, so headcount is their product and your invoice grows with their payroll. Ours is built the other way: the engine does the watching, the founder does the judging, and the desk behind them keeps both honest. What you pay for is a lane that is watched every single day - and one person, reachable by phone, who is accountable for all of it.</p>
+    <p class="reveal d1" style="margin-top:26px"><a class="btn btn-primary" href="/#book">Book your Capture Call →</a></p>
+    <p class="contactline reveal d2"><a href="tel:+12025034503"><b style="color:#e8cd88">(202) 503-4503</b></a> &nbsp;&middot;&nbsp; <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a></p>
+  </section>
+
+</main>
+
+<footer style="position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:url('/img/spectrum.jpg') center 30%/cover;opacity:.5"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(11,26,42,.55),rgba(9,20,32,.86))"></div>
+  <div class="in" style="position:relative">
+    <span style="font-family:var(--display);font-size:1.2rem;color:#ece3cf">Contract Fetch</span> &nbsp;·&nbsp; Federal Capture Intelligence &nbsp;·&nbsp; Est. MMXXVI
+    <p style="margin:14px 0 2px;color:#9fb1c4;line-height:1.8">400 Spectrum Center Drive, Suite 909 &middot; Irvine, CA 92618<br><a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503">(202) 503-4503</a> &nbsp;&middot;&nbsp; <a href="/founder">The founder</a></p>
+    <p class="far">Contract Fetch provides capture research and proposal support for small federal contractors. Fees are never contingent on whether you win an award (FAR 52.203-5). We work with one firm per solicitation to avoid organizational conflicts of interest (FAR 9.5). © 2026 Contract Fetch.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Arrived from a personalized briefing? Keep every route home pointed at that briefing.
+  var from = new URLSearchParams(location.search).get('from');
+  if(from && /^[a-z0-9-]{1,80}$/.test(from)){
+    document.querySelectorAll('a[href="/"], a[href="/#book"]').forEach(function(a){ a.setAttribute('href','/'+from); });
+    document.querySelectorAll('a[href="/founder"]').forEach(function(a){ a.setAttribute('href','/founder/?from='+from); });
+  }
+  // visit beacon (same sheet as the slug pages)
+  try{
+    var b='https://script.google.com/macros/s/AKfycbxhbVWIfZIf4kp8ZvUGF37AKjuULizFOk56O0CilrSh3GXRn9Gtrs-vO3wsF2gSP9rL/exec?slug=operation-page'+(from?'&firm='+encodeURIComponent(from):'')+'&ref='+encodeURIComponent(document.referrer||'');
+    if(navigator.sendBeacon){navigator.sendBeacon(b);}else{(new Image()).src=b+'&t='+Date.now();}
+  }catch(e){}
+  var rev = [].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window && rev.length){
+    var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    rev.forEach(function(e){io.observe(e);});
+  } else { rev.forEach(function(e){e.classList.add('in');}); }
+})();
+</script>
+</body>
+</html>
