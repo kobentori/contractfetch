@@ -73,6 +73,14 @@
   .intro h1 .em{font-style:italic;color:var(--oxblood)}
   @media(max-width:700px){.intro{grid-template-columns:1fr;gap:28px}.intro .portrait{max-width:250px}}
 
+  /* ===== stat strip ===== */
+  .statgrid{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--navy);background:var(--card);margin-top:34px}
+  .statgrid .s{padding:14px 16px;border-right:1px solid var(--line)}
+  .statgrid .s:last-child{border-right:none}
+  .statgrid .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mutemono);display:block;margin-bottom:4px}
+  .statgrid .v{font-family:var(--display);font-size:1.12rem;font-weight:600;color:var(--navy);line-height:1.12}
+  @media(max-width:700px){.statgrid{grid-template-columns:repeat(2,1fr)}.statgrid .s:nth-child(2){border-right:none}.statgrid .s:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
   /* ===== desk quote card ===== */
   .quote{border:1.5px solid var(--navy);background:var(--card);margin:26px 0 0;padding:0;overflow:hidden;box-shadow:6px 6px 0 rgba(13,31,49,.06)}
   .quote .bar{height:5px;background:linear-gradient(90deg,var(--gold),var(--oxblood))}
@@ -125,7 +133,7 @@
       <span><span class="nm">Contract Fetch</span><br><span class="tg">Find. Pursue. Win.</span></span>
     </a>
     <span class="mastlink" aria-current="page">The Founder</span>
-    <a class="btn btn-primary" href="/#book">Claim your seat →</a>
+    <a class="btn btn-primary" href="#book">Claim your seat →</a>
   </div>
 </div>
 
@@ -142,6 +150,12 @@
       <h1 class="reveal">Robert J. Coventry III</h1>
       <p class="lead reveal d1">Contract Fetch runs on two things: an always-on capture engine tracking every solicitation, award, and recompete in your lane across SAM, USAspending, and FPDS - and the founder, who reads its output himself. Your research is never handed down to a junior analyst. When you book a call, you get the person who built the machine. Here is exactly who that is.</p>
       <p class="lead reveal d1">I run the federal capture desk at <b>Starside Security &amp; Investigation</b> - a GSA schedule holder my family has operated since 1998, licensed across five states. Federal capture is not a service I dreamed up to sell you. It is the work I do with my own family's money on the line, every single day. Contract Fetch is that desk, opened to ten outside firms.</p>
+    </div>
+    <div class="statgrid reveal d2">
+      <div class="s"><span class="k">Family firm</span><span class="v">Est. 1998</span></div>
+      <div class="s"><span class="k">Priced, last 30 days</span><span class="v">Nine figures</span></div>
+      <div class="s"><span class="k">U.S. patents</span><span class="v">2 granted</span></div>
+      <div class="s"><span class="k">Seats</span><span class="v">Ten, one per lane</span></div>
     </div>
   </section>
 
@@ -209,10 +223,14 @@
   <!-- ============ BOOK ============ -->
   <section class="wrap band-dark">
     <span class="lbl reveal">Talk to me</span>
-    <h2 class="reveal">Thirty minutes. No slide deck. No junior rep.</h2>
+    <h2 class="reveal" id="book">Thirty minutes. No slide deck. No junior rep.</h2>
     <p class="lead reveal d1">You get me on the phone, your federal record on the table, and a free <b>30-Day Capture Sprint</b> built on your real awards before you pay a cent. If it's not a fit, you keep the roadmap and we part friends - and you'll still know your lane better than your incumbent does.</p>
-    <p class="reveal d1" style="margin-top:26px"><a class="btn btn-primary" href="/#book">Book your Capture Call →</a></p>
-    <p class="contactline reveal d2"><a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a> &nbsp;&middot;&nbsp; <a href="tel:+12025034503">(202) 503-4503</a></p>
+    <p class="lead reveal d1" style="margin-top:18px;font-size:1.02rem">One more thing. If the briefing that brought you here felt unnervingly specific - everything in it came from public federal records. SAM, USAspending, FPDS. Your competitors' records are exactly as public. <b>That is the product.</b></p>
+    <div class="calwrap reveal d2" style="border:1.5px solid #d2ad62;background:#fbfaf4;margin-top:28px;overflow:hidden;box-shadow:0 24px 56px rgba(0,0,0,.45)">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/coventry-getcontractfetch/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=fbfaf4&text_color=211f19&primary_color=9a7b3f" style="min-width:300px;height:640px"></div>
+      <noscript><div style="padding:28px;text-align:center;color:#736a57;font-family:var(--mono);font-size:.82rem">Enable JavaScript to load the scheduler, or email <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a>.</div></noscript>
+    </div>
+    <p class="contactline reveal d2">Rather just talk? Call me directly: <a href="tel:+12025034503"><b style="color:#e8cd88">(202) 503-4503</b></a> &nbsp;&middot;&nbsp; <a href="mailto:coventry@getcontractfetch.com">coventry@getcontractfetch.com</a></p>
   </section>
 
 </main>
@@ -229,11 +247,16 @@
 
 <script>
 (function(){
-  // Arrived from a personalized briefing? Send every "back" link to that briefing, not the generic page.
+  // Arrived from a personalized briefing? Send the brand link back to that briefing, not the generic page.
   var from = new URLSearchParams(location.search).get('from');
   if(from && /^[a-z0-9-]{1,80}$/.test(from)){
-    document.querySelectorAll('a[href="/"], a[href="/#book"]').forEach(function(a){ a.setAttribute('href','/'+from); });
+    document.querySelectorAll('a[href="/"]').forEach(function(a){ a.setAttribute('href','/'+from); });
   }
+  // visit beacon (same sheet as the slug pages)
+  try{
+    var b='https://script.google.com/macros/s/AKfycbxhbVWIfZIf4kp8ZvUGF37AKjuULizFOk56O0CilrSh3GXRn9Gtrs-vO3wsF2gSP9rL/exec?slug=founder-page'+(from?'&firm='+encodeURIComponent(from):'')+'&ref='+encodeURIComponent(document.referrer||'');
+    if(navigator.sendBeacon){navigator.sendBeacon(b);}else{(new Image()).src=b+'&t='+Date.now();}
+  }catch(e){}
   var rev = [].slice.call(document.querySelectorAll('.reveal'));
   if('IntersectionObserver' in window && rev.length){
     var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
@@ -241,5 +264,6 @@
   } else { rev.forEach(function(e){e.classList.add('in');}); }
 })();
 </script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
