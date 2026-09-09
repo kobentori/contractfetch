@@ -466,7 +466,6 @@ a,.btn,.lbl,.plogo,.mk{transition:color .18s ease,opacity .2s ease,transform .2s
     <div class="famrow reveal d1">
       <div class="fc"><span class="k">Top agency</span><span class="v" data-p="agency">—</span></div>
       <div class="fc"><span class="k">Primary NAICS</span><span class="v" data-p="naics">—</span></div>
-      <div class="fc"><span class="k">Next contract date</span><span class="v"><span data-p="recompetedays">—</span> days out</span></div>
     </div>
     <div class="herointel reveal d2">
       <span class="il">● Live intel</span>
@@ -801,12 +800,12 @@ c-12 19 -17 38 -14 55 8 36 -26 57 -90 56 -28 0 -61 5 -74 12 -22 12 -23 14
 
   // ---- existing hooks (preserved) ----
   var firm=g('firm'), contact=g('contact'), agency=g('agency'), sub=g('subagency'),
-      recompete=g('recompete'), runrate=g('runrate');
+      recompete='', runrate=g('runrate');   // 9/8: award end-date claims struck - never rendered from params
   // ---- new hooks ----
   var contract=g('contract'), rival=g('rival'), naics=g('naics'), niche=g('niche'),
       city=g('city'), state=g('state'), matches=g('matches'),
-      recompetedays=g('recompetedays'), verdict=g('verdict'),
-      rc_contract=g('rc_contract'), rc_agency=g('rc_agency'), rc_days=g('rc_days'),
+      recompetedays='', verdict=g('verdict'),
+      rc_contract='', rc_agency='', rc_days='',
       heroline=g('heroline'), cta=g('cta'), greet=g('greet'), bookhdr=g('bookhdr');
 
   // Clean the address bar: params are captured above, so swap the long personalization
